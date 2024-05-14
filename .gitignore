@@ -32,6 +32,7 @@ project.xcworkspace
 # Android/IntelliJ
 #
 .classpath
+*.hprof
 .cxx
 .gradle
 .idea

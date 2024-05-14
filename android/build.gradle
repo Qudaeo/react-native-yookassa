@@ -1,23 +1,18 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-
 buildscript {
+    ext.kotlin_version = '1.9.22'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        implementation "com.android.tools.build:gradle:8.3.2"
-        implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22"
+        classpath "com.android.tools.build:gradle:8.3.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
-repositories {
-    mavenCentral()
-    google()
-}
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     namespace "group.lamantin.yandex.payment"
@@ -32,6 +27,11 @@ android {
     }
 }
 
+repositories {
+    mavenCentral()
+    google()
+}
+
 dependencies {
 //  as my project doesn't require yoomoney paymend method (oly card), this lib apparently isn't necessary
 //    implementation "ru.yoo.sdk.auth:auth:1.0.51"
@@ -40,10 +40,5 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
-    implementation 'ru.yoomoney.sdk.kassa.payments:yookassa-android-sdk:6.7.0'
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    implementation 'ru.yoomoney.sdk.kassa.payments:yookassa-android-sdk:6.4.2'
 }
