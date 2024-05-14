@@ -3,49 +3,29 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 buildscript {
-    ext.getExtOrDefault = {name ->
-        return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['ReactNativeYandexPayment_' + name]
-    }
-
-    ext.kotlin_version = '1.3.50'
     repositories {
-        jcenter()
-        maven {
-            url 'https://maven.google.com/'
-            name 'Google'
-        }
-        maven { url "https://jitpack.io" }
-        maven { url 'https://dl.bintray.com/yoomoney/maven' }
+        google()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${getExtOrDefault('kotlinVersion')}")
+        implementation "com.android.tools.build:gradle:8.3.2"
+        implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22"
     }
 }
 
 repositories {
-    jcenter()
-    maven {
-        url 'https://maven.google.com/'
-        name 'Google'
-    }
-    maven { url "https://jitpack.io" }
-    flatDir {
-        dirs '../../../android/app/libs'
-    }
+    mavenCentral()
+    google()
 }
 
-
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+    namespace "group.lamantin.yandex.payment"
+    compileSdk 34
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 24
+        targetSdkVersion 34
     }
     lintOptions {
         abortOnError false
@@ -53,15 +33,17 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.aar"])
-    implementation(name:'ThreatMetrix-Android-SDK-5.4-73', ext:'aar')
-    implementation 'ru.yoomoney.sdk.kassa.payments:yookassa-android-sdk:6.4.2'
 //  as my project doesn't require yoomoney paymend method (oly card), this lib apparently isn't necessary
 //    implementation "ru.yoo.sdk.auth:auth:1.0.51"
+    // For < 0.71, this will be from the local maven repo
+    // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
+    //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
+    implementation 'ru.yoomoney.sdk.kassa.payments:yookassa-android-sdk:6.7.0'
 }
-  
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}

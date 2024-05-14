@@ -44,8 +44,7 @@ android.iml
 buck-out/
 \.buckd/
 # *.keystore
-
-config.js
+/example/src/config.ts
 yandex.properties
 TrustDefender.framework
 Pods
