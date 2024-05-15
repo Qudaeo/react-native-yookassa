@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:8.3.2"
+        classpath "com.android.tools.build:gradle:8.2.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -33,12 +33,12 @@ repositories {
 }
 
 dependencies {
-//  as my project doesn't require yoomoney paymend method (oly card), this lib apparently isn't necessary
+//  as my project doesn't require yoomoney payment method (oly card), this lib apparently isn't necessary
 //    implementation "ru.yoo.sdk.auth:auth:1.0.51"
     // For < 0.71, this will be from the local maven repo
     // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22"
-    implementation 'ru.yoomoney.sdk.kassa.payments:yookassa-android-sdk:6.4.2'
+    implementation 'ru.yoomoney.sdk.kassa.payments:yookassa-android-sdk:6.7.0'
 }
