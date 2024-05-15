@@ -1,12 +1,19 @@
-import React, { Component } from 'react'
-import { StyleSheet, ScrollView, View, Text, TouchableOpacity, Platform } from 'react-native'
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  TouchableOpacity,
+  Platform,
+} from 'react-native';
 
-import { Colors } from 'react-native/Libraries/NewAppScreen'
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 //import SheetMenu from 'react-native-sheetmenu'
 
-import YandexPayment from '../../'
-import SwitchView from './components/SwitchView'
-import configExample from './config.example'
+import YandexPayment from '../../';
+import SwitchView from './components/SwitchView';
+import config from './config';
 
 const Button = (props: any) => {
   return (
@@ -19,11 +26,12 @@ const Button = (props: any) => {
         alignSelf: 'center',
         ...props.style,
       }}
-      onPress={props.onPress}>
+      onPress={props.onPress}
+    >
       <Text style={{ textAlign: 'center' }}>{props.text}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 class App extends Component {
   state = {
@@ -34,24 +42,27 @@ class App extends Component {
       YANDEX_MONEY: null,
     },
     currency: 'RUB',
-  }
+  };
 
   changePaymentType = (checked: any, code: any) => {
-    const paymentTypes: any = this.state.paymentTypes
-    paymentTypes[code] = checked ? code : null
-    this.setState({ paymentTypes })
-  }
+    const paymentTypes: any = this.state.paymentTypes;
+    paymentTypes[code] = checked ? code : null;
+    this.setState({ paymentTypes });
+  };
 
   onSelectCurrency = (currency: any) => {
     this.setState({
       currency: currency,
-    })
-  }
+    });
+  };
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={styles.scrollView}
+        >
           <View>
             <SwitchView
               title="BANK_CARD"
@@ -62,8 +73,8 @@ class App extends Component {
                 paddingHorizontal: 16,
               }}
               checked={!!this.state.paymentTypes['BANK_CARD']}
-              onChanges={checked => {
-                this.changePaymentType(checked, 'BANK_CARD')
+              onChanges={(checked) => {
+                this.changePaymentType(checked, 'BANK_CARD');
               }}
             />
 
@@ -76,8 +87,8 @@ class App extends Component {
                 paddingHorizontal: 16,
               }}
               checked={!!this.state.paymentTypes['PAY']}
-              onChanges={checked => {
-                this.changePaymentType(checked, 'PAY')
+              onChanges={(checked) => {
+                this.changePaymentType(checked, 'PAY');
               }}
             />
 
@@ -90,8 +101,8 @@ class App extends Component {
                 paddingHorizontal: 16,
               }}
               checked={!!this.state.paymentTypes['SBERBANK']}
-              onChanges={checked => {
-                this.changePaymentType(checked, 'SBERBANK')
+              onChanges={(checked) => {
+                this.changePaymentType(checked, 'SBERBANK');
               }}
             />
 
@@ -104,8 +115,8 @@ class App extends Component {
                 paddingHorizontal: 16,
               }}
               checked={!!this.state.paymentTypes['YANDEX_MONEY']}
-              onChanges={checked => {
-                this.changePaymentType(checked, 'YANDEX_MONEY')
+              onChanges={(checked) => {
+                this.changePaymentType(checked, 'YANDEX_MONEY');
               }}
             />
 
@@ -115,7 +126,8 @@ class App extends Component {
                 paddingVertical: 16,
                 marginVertical: 16,
                 paddingHorizontal: 16,
-              }}>
+              }}
+            >
               <TouchableOpacity
                 style={{ flexDirection: 'row' }}
                 onPress={() => {
@@ -136,7 +148,8 @@ class App extends Component {
                   //     },
                   //   ],
                   // }).show()
-                }}>
+                }}
+              >
                 <Text style={{ flexGrow: 1 }}>Currency</Text>
                 <Text>{this.state.currency}</Text>
               </TouchableOpacity>
@@ -153,25 +166,33 @@ class App extends Component {
             }}
             text="YandexPayment.show()"
             onPress={async () => {
-              const result = await YandexPayment.show(
-                {
-                  id: configExample.id,
-                  token: configExample.token,
-                  name: 'React shop',
-                  description: `Buy on ${Platform.OS} ${Platform.Version}`,
-                },
-                {
-                  amount: 1.01,
-                  currency: this.state.currency,
-                  types: Object.values(this.state.paymentTypes).filter(it => it !== null),
-                }
-              )
-              console.warn(JSON.stringify(result))
+              try {
+                const result = await YandexPayment.show(
+                  {
+                    id: config.id,
+                    token: config.token,
+                    name: 'React shop',
+                    description: `Buy on ${Platform.OS} ${Platform.Version}`,
+                  },
+                  {
+                    amount: 1.01,
+                    // @ts-ignore
+                    currency: this.state.currency,
+                    // @ts-ignore
+                    types: Object.values(this.state.paymentTypes).filter(
+                      (it) => it !== null
+                    ),
+                  }
+                );
+                console.warn(JSON.stringify(result));
+              } catch (e) {
+                console.error(e);
+              }
             }}
           />
         </ScrollView>
       </View>
-    )
+    );
   }
 }
 
@@ -212,6 +233,6 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
   },
-})
+});
 
-export default App
+export default App;

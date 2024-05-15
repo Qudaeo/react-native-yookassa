@@ -1,4 +1,4 @@
-package com.awesomelibraryexample
+package com.yookassaexample
 
 import android.app.Application
 import com.facebook.react.PackageList

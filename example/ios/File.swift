@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  AwesomeLibraryExample
+//  YookassaExample
 //
 
 import Foundation

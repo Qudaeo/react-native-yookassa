@@ -1,6 +1,6 @@
-const configExample = {
+const config = {
   id: 'id',
   token: 'token',
-}
+};
 
-export default configExample
+export default config;
