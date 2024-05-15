@@ -21,7 +21,8 @@ export default class SwitchView extends Component<SwitchViewProps, SwitchViewSta
     title: null,
     description: null,
     descriptionUncheked: null,
-    onChanges: (checked: boolean) => {},
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    onChanges: () => {},
     checked: false,
     style: {},
     styleSwitch: {},
@@ -41,7 +42,7 @@ export default class SwitchView extends Component<SwitchViewProps, SwitchViewSta
     }
   }
 
-  componentDidUpdate(prevProps: SwitchViewProps, prevState: SwitchViewState) {
+  componentDidUpdate(prevProps: SwitchViewProps) {
     if (this.props.internal) {
       if (prevProps.checked !== this.props.checked) {
         if (this.props.checked !== this.state.checked) {
@@ -54,15 +55,7 @@ export default class SwitchView extends Component<SwitchViewProps, SwitchViewSta
   }
 
   render() {
-    const {
-      title,
-      description,
-      descriptionUncheked,
-      onChanges,
-      style,
-      styleSwitch,
-      internal,
-    } = this.props
+    const { title, description, descriptionUncheked, onChanges, style, internal } = this.props
     const checked = internal ? this.state.checked : this.props.checked
     const fallback = descriptionUncheked ? descriptionUncheked : description
     const selectedDescription = checked ? description : fallback

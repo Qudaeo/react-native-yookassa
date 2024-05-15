@@ -1,17 +1,8 @@
 import React, { Component } from 'react'
-import {
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  TouchableOpacity,
-  Platform,
-} from 'react-native'
+import { StyleSheet, ScrollView, View, Text, TouchableOpacity, Platform } from 'react-native'
 
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen'
-import SheetMenu from 'react-native-sheetmenu'
+import { Colors } from 'react-native/Libraries/NewAppScreen'
+//import SheetMenu from 'react-native-sheetmenu'
 
 import YandexPayment from '../../'
 import SwitchView from './components/SwitchView'
@@ -128,23 +119,23 @@ class App extends Component {
               <TouchableOpacity
                 style={{ flexDirection: 'row' }}
                 onPress={() => {
-                  new SheetMenu({
-                    title: 'Select currency:',
-                    actions: [
-                      {
-                        title: 'RUB',
-                        onPress: () => this.onSelectCurrency('RUB'),
-                      },
-                      {
-                        title: 'EUR',
-                        onPress: () => this.onSelectCurrency('EUR'),
-                      },
-                      {
-                        title: 'USD',
-                        onPress: () => this.onSelectCurrency('USD'),
-                      },
-                    ],
-                  }).show()
+                  // new SheetMenu({
+                  //   title: 'Select currency:',
+                  //   actions: [
+                  //     {
+                  //       title: 'RUB',
+                  //       onPress: () => this.onSelectCurrency('RUB'),
+                  //     },
+                  //     {
+                  //       title: 'EUR',
+                  //       onPress: () => this.onSelectCurrency('EUR'),
+                  //     },
+                  //     {
+                  //       title: 'USD',
+                  //       onPress: () => this.onSelectCurrency('USD'),
+                  //     },
+                  //   ],
+                  // }).show()
                 }}>
                 <Text style={{ flexGrow: 1 }}>Currency</Text>
                 <Text>{this.state.currency}</Text>
@@ -162,7 +153,6 @@ class App extends Component {
             }}
             text="YandexPayment.show()"
             onPress={async () => {
-
               const result = await YandexPayment.show(
                 {
                   id: configExample.id,
@@ -172,9 +162,7 @@ class App extends Component {
                 },
                 {
                   amount: 1.01,
-                  // @ts-ignore
                   currency: this.state.currency,
-                  // @ts-ignore
                   types: Object.values(this.state.paymentTypes).filter(it => it !== null),
                 }
               )
