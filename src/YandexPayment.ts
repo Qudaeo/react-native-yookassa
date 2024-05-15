@@ -6,10 +6,6 @@ import { NativeModules } from 'react-native';
 const YandexPaymentNative = NativeModules.YandexPayment;
 
 export class YandexPayment {
-  /**
-   * Show YandexCheckout screen and retrieve payment token
-   * @param shop props of your shop
-   */
   static show(shop: Shop, payment: Payment): Promise<PaymentToken> {
     return YandexPaymentNative.attach({
       SHOP_ID: shop.id,
