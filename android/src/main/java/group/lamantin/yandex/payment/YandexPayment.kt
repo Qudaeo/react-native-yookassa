@@ -134,7 +134,7 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
         private const val RESULT_OK = "RESULT_OK"
     }
 
-    fun mapShop(map: ReadableMap): Shop {
+    private fun mapShop(map: ReadableMap): Shop {
         return Shop(
                 map.getString(SHOP_ID)!!,
                 map.getString(SHOP_TOKEN)!!,
@@ -144,7 +144,7 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
         )
     }
 
-    fun mapPayment(map: ReadableMap): Payment {
+    private fun mapPayment(map: ReadableMap): Payment {
         return Payment(
                 amount = map.getDouble(PAYMENT_AMOUNT),
                 currency = map.getString(PAYMENT_CURRENCY)!!,
@@ -154,12 +154,13 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
         )
     }
 
-    fun ReadableArray.toSetPayment(): Set<PaymentMethodType> {
+    private fun ReadableArray.toSetPayment(): Set<PaymentMethodType> {
         val set = mutableSetOf<PaymentMethodType>()
         (0 until this.size()).forEach { index ->
             when (this.getString(index)) {
                 PaymentMethodType.BANK_CARD.name -> set.add(PaymentMethodType.BANK_CARD)
                 PaymentMethodType.YOO_MONEY.name -> set.add(PaymentMethodType.YOO_MONEY)
+                PaymentMethodType.SBP.name -> set.add(PaymentMethodType.SBP)
                 PaymentMethodType.SBERBANK.name -> set.add(PaymentMethodType.SBERBANK)
                 PaymentMethodType.GOOGLE_PAY.name, "PAY" -> set.add(PaymentMethodType.GOOGLE_PAY)
             }
@@ -170,7 +171,7 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
         return set
     }
 
-    fun String.toSavePaymentMethod(): SavePaymentMethod {
+    private fun String.toSavePaymentMethod(): SavePaymentMethod {
         when (this) {
             SavePaymentMethod.ON.name -> return SavePaymentMethod.ON
             SavePaymentMethod.OFF.name -> return SavePaymentMethod.OFF

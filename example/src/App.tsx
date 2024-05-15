@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, type FC } from 'react';
 import {
   StyleSheet,
   ScrollView,
@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   Platform,
+  type ViewStyle,
 } from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -15,20 +16,27 @@ import YandexPayment from '../../';
 import SwitchView from './components/SwitchView';
 import config from './config';
 
-const Button = (props: any) => {
+interface ButtonProps {
+  onPress: () => void;
+  style: ViewStyle;
+  title: string;
+}
+
+const Button: FC<ButtonProps> = ({ onPress, style, title }) => {
   return (
     <TouchableOpacity
-      style={{
-        alignItems: 'center',
-        alignContent: 'center',
-        paddingHorizontal: 16,
-        paddingVertical: 16,
-        alignSelf: 'center',
-        ...props.style,
-      }}
-      onPress={props.onPress}
+      style={[
+        {
+          alignItems: 'center',
+          alignContent: 'center',
+          padding: 16,
+          alignSelf: 'center',
+        },
+        style,
+      ]}
+      onPress={onPress}
     >
-      <Text style={{ textAlign: 'center' }}>{props.text}</Text>
+      <Text>{title}</Text>
     </TouchableOpacity>
   );
 };
@@ -36,10 +44,11 @@ const Button = (props: any) => {
 class App extends Component {
   state = {
     paymentTypes: {
+      YOO_MONEY: null,
+      GOOGLE_PAY: null,
       BANK_CARD: null,
-      PAY: null,
       SBERBANK: null,
-      YANDEX_MONEY: null,
+      SBP: null,
     },
     currency: 'RUB',
   };
@@ -79,16 +88,16 @@ class App extends Component {
             />
 
             <SwitchView
-              title="PAY"
+              title="YOO_MONEY"
               style={{
                 backgroundColor: '#fff',
                 paddingVertical: 8,
                 marginVertical: 1,
                 paddingHorizontal: 16,
               }}
-              checked={!!this.state.paymentTypes['PAY']}
+              checked={!!this.state.paymentTypes['YOO_MONEY']}
               onChanges={(checked) => {
-                this.changePaymentType(checked, 'PAY');
+                this.changePaymentType(checked, 'YOO_MONEY');
               }}
             />
 
@@ -107,16 +116,30 @@ class App extends Component {
             />
 
             <SwitchView
-              title="YANDEX_MONEY"
+              title="GOOGLE_PAY"
               style={{
                 backgroundColor: '#fff',
                 paddingVertical: 8,
                 marginVertical: 1,
                 paddingHorizontal: 16,
               }}
-              checked={!!this.state.paymentTypes['YANDEX_MONEY']}
+              checked={!!this.state.paymentTypes['GOOGLE_PAY']}
               onChanges={(checked) => {
-                this.changePaymentType(checked, 'YANDEX_MONEY');
+                this.changePaymentType(checked, 'GOOGLE_PAY');
+              }}
+            />
+
+            <SwitchView
+              title="SBP"
+              style={{
+                backgroundColor: '#fff',
+                paddingVertical: 8,
+                marginVertical: 1,
+                paddingHorizontal: 16,
+              }}
+              checked={!!this.state.paymentTypes['SBP']}
+              onChanges={(checked) => {
+                this.changePaymentType(checked, 'SBP');
               }}
             />
 
@@ -164,7 +187,7 @@ class App extends Component {
               backgroundColor: '#ffcc00',
               borderRadius: 8,
             }}
-            text="YandexPayment.show()"
+            title="YandexPayment.show()"
             onPress={async () => {
               try {
                 const result = await YandexPayment.show(
@@ -182,6 +205,7 @@ class App extends Component {
                     types: Object.values(this.state.paymentTypes).filter(
                       (it) => it !== null
                     ),
+                    yooKassaClientId: config.id,
                   }
                 );
                 console.warn(JSON.stringify(result));
