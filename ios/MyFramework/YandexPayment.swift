@@ -1,4 +1,5 @@
 import Foundation
+import React
 
 import YooKassaPayments
 import YooKassaPaymentsApi
@@ -12,6 +13,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
     
     @objc
     func show3ds(_ requestUrl: String,
+                 paymentType: String,
                  resolver: @escaping RCTPromiseResolveBlock,
                  rejecter: @escaping RCTPromiseRejectBlock) -> Void {
         // decline previous callback
@@ -21,10 +23,10 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
         self.storedResolver = resolver
         self.storedRejecter = rejecter
         if let viewController = viewController {
-            viewController.start3dsProcess(requestUrl: requestUrl)
+            viewController.startConfirmationProcess(confirmationUrl: requestUrl, paymentMethodType: stringToPaymentType(paymentType: paymentType))
         }
     }
-    
+
     @objc
     func close() -> Void {
         if let viewController = viewController  {
@@ -63,6 +65,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
         let moduleInputData = TokenizationModuleInputData(
             clientApplicationKey: shop.token,
             shopName: shop.name,
+            shopId: shop.id,
             purchaseDescription: shop.description,
             amount: Amount(value: Decimal(payment.amount), currency: payment.currency),
             tokenizationSettings: TokenizationSettings(paymentMethodTypes: PaymentMethodTypes(rawValue: payment.types)),
@@ -76,8 +79,9 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
         )
         
         DispatchQueue.main.async {
-            let rootViewController = UIApplication.shared.keyWindow!.rootViewController!
-            rootViewController.present(self.viewController!, animated: true, completion: nil)
+            let rootViewController = UIApplication
+                .shared.windows.filter {$0.isKeyWindow}.first!.rootViewController
+            rootViewController?.present(self.viewController!, animated: true, completion: nil)
         }
     }
     
@@ -93,7 +97,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
         }
     }
     
-    func didSuccessfullyConfirmation(paymentMethodType: YooKassaPayments.PaymentMethodType) {
+    func didFinishConfirmation(paymentMethodType: YooKassaPayments.PaymentMethodType) {
         DispatchQueue.main.async {
             if let resolver = self.storedResolver {
                 resolver("RESULT_OK")
@@ -110,17 +114,16 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
         if let resolver = self.storedResolver {
             resolver([
                 token.paymentToken,
-                paymentTypeToString(paymentType: paymentMethodType)
+                paymentTypeToString(paymentType: paymentMethodType),
                 ])
         }
         self.storedResolver = nil
         self.storedRejecter = nil
     }
-        
+
     func didFinish(on module: TokenizationModuleInput, with error: YooKassaPaymentsError?) {
         DispatchQueue.main.async {
             if let rejecter = self.storedRejecter {
-                NSLog("123")
                 rejecter("problems", "", error)
             }
             self.storedResolver = nil
@@ -142,6 +145,21 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
                 return "PAY"
             default:
               return "BANK_CARD"
+        }
+    }
+    
+    func stringToPaymentType(paymentType: String) -> YooKassaPayments.PaymentMethodType {
+        switch paymentType {
+            case "BANK_CARD":
+                return .bankCard
+            case "YOO_MONEY":
+                return .yooMoney
+            case "SBERBANK":
+                return .sberbank
+            case "PAY":
+                return .applePay
+            default:
+              return .bankCard
         }
     }
     

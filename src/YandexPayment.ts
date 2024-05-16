@@ -26,8 +26,8 @@ export class YandexPayment {
     }));
   }
 
-  static show3ds(requestUrl: string): Promise<string> {
-    return YandexPaymentNative.show3ds(requestUrl).then((result: string) => {
+  static show3ds(requestUrl: string, paymentType: string): Promise<string> {
+    return YandexPaymentNative.show3ds(requestUrl, paymentType).then((result: string) => {
       if (result !== 'RESULT_OK') {
         throw new Error('3ds cancelled');
       }

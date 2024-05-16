@@ -17,6 +17,7 @@ RCT_EXTERN_METHOD(attach: (NSDictionary *) map
 RCT_EXTERN_METHOD(close)
 
 RCT_EXTERN_METHOD(show3ds: (NSString *) requestUrl
+                  paymentType:(NSString *) paymentType
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 

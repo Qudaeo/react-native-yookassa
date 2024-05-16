@@ -77,3 +77,4 @@ lib/
 
 /example/src/config.ts
 /example/.yarn
+/example/ios/.xcode.env.local

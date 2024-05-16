@@ -78,7 +78,7 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
     }
 
     @ReactMethod
-    fun show3ds(requestUrl: String, promise: Promise) {
+    fun show3ds(requestUrl: String, paymentType: String, promise: Promise) {
         try {
             val intent = Checkout.create3dsIntent(currentActivity!!, requestUrl)
 
