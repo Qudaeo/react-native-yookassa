@@ -1,5 +1,5 @@
 import type { PaymentToken } from './PaymentToken';
-import type { Payment } from './Payment';
+import type { Payment, PaymentType } from './Payment'
 import type { Shop } from './Shop';
 import { NativeModules } from 'react-native';
 
@@ -20,14 +20,14 @@ export class YandexPayment {
       PAYMENT_TYPES_ARRAY: payment.types || [],
       PAYMENT_SAVE_TYPE: payment.savePaymentMethod || 'OFF',
       PAYMENT_YOO_MONEY_CLIENT_ID: payment.yooKassaClientId,
-    }).then((arr: string[]) => ({
+    }).then((arr: [string, PaymentType]): PaymentToken => ({
       token: arr[0],
       type: arr[1],
     }));
   }
 
-  static show3ds(requestUrl: string, paymentType: string): Promise<string> {
-    return YandexPaymentNative.show3ds(requestUrl, paymentType).then((result: string) => {
+  static show3ds(requestUrl: string, paymentType: PaymentType): Promise<'RESULT_OK'> {
+    return YandexPaymentNative.show3ds(requestUrl, paymentType).then((result?: 'RESULT_OK') => {
       if (result !== 'RESULT_OK') {
         throw new Error('3ds cancelled');
       }

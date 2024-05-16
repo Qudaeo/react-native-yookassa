@@ -132,7 +132,6 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
         }
     }
     
-//  #pragma mark - Helpers
     func paymentTypeToString(paymentType: YooKassaPayments.PaymentMethodType) -> String {
         switch paymentType {
             case .bankCard:
@@ -162,7 +161,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
               return .bankCard
         }
     }
-    
+
     func arrayToSetPaymentTypes(nsArray: NSArray) -> Set<YooKassaPayments.PaymentMethodType> {
         var set: Set<YooKassaPayments.PaymentMethodType> = []
 
@@ -185,7 +184,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
             return set
         }
     }
-    
+
     func stringToSavePaymentType(string: String) -> YooKassaPayments.SavePaymentMethod {
         switch string {
             case "ON":
@@ -198,7 +197,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
               return .off
         }
     }
-  
+
     func stringToCurrency(string: String) -> Currency {
         return Currency(rawValue: string)!
     }

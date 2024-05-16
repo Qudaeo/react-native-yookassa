@@ -1,4 +1,6 @@
+import type { PaymentType } from './Payment'
+
 export interface PaymentToken {
   token: string
-  type: string
+  type: PaymentType
 }
