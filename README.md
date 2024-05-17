@@ -1,19 +1,15 @@
-What is it
-----------
+Yookassa Checkout on React Native
+=====
 
-Library for implement Yandex Checkout functionality on React Native environment.
+Android library: [6.7.0](https://git.yoomoney.ru/projects/SDK/repos/yookassa-android-sdk/browse)
 
-Android library: [5.1.2](https://github.com/yandex-money/yandex-checkout-android-sdk)
-
-iOS library: [5.2.0](https://github.com/yandex-money/yandex-checkout-payments-swift)
-
-![v1](./.github/v1.gif)
+iOS library: [6.17.0](https://git.yoomoney.ru/projects/SDK/repos/yookassa-payments-swift/browse)
 
 Usage
 =====
 
 ```ts
-import YandexPayment, { Shop, Payment, PaymentToken } from 'react-native-yandex-payment';
+import YandexPayment, { Shop, Payment, PaymentToken } from 'react-native-yookassa';
 
 const shop: Shop = {
     id: 'SHOP_ID',
@@ -25,6 +21,8 @@ const payment: Payment = {
     amount: 399.99,
     currency: 'RUB', // 'RUB' | 'USD' | 'EUR'
     types: ['BANK_CARD'], // 'YANDEX_MONEY' | 'BANK_CARD' | 'SBERBANK' | 'PAY'. PAY - means Google Pay or Apple Pay
+    yooKassaClientId: 'SHOP_ID',
+    savePaymentMethod: 'OFF', // 'ON' | 'OFF' | 'USER_SELECTS'
 }
 const paymentToken: PaymentToken = await YandexPayment.show(shop, payment)
 console.warn(paymentToken.token) // payment token
@@ -35,124 +33,91 @@ Install
 =======
 
 ```bash
-npm install react-native-yandex-payment --save
+npm install react-native-yookassa --save
 ```
 or
 ```bash
-yarn add react-native-yandex-payment
+yarn add react-native-yookassa
 ```
 
 Android
 -------
 
-Add Yandex repository inside `android/build.gradle`
-```groovy
-allprojects {
-    repositories {
-      ...
-      maven { url 'https://dl.bintray.com/yandex-money/maven' }
-    }
-}
+minSdkVersion = 24
+
+1. Add file `android/app/src/main/res/xml/ym_network_security_config.xml`
+```xml
+<domain-config cleartextTrafficPermitted="true">
+  <domain includeSubdomains="true">certs.yoomoney.ru</domain>
+</domain-config>
 ```
 
-Enable multidex if needed in `android/app/build.gradle`
+2. Add line in `android/app/src/main/AndroidManifest.xml`
 ```diff
-android {
-    defaultConfig {
-        ...
-+        multiDexEnabled true
-    }
-}
+    <application
+       ...
++      android:networkSecurityConfig="@xml/ym_network_security_config"
+       ...
+    />
+```
 
-dependencies {
+3. Add file `android/app/src/debug/res/xml/network_security_config.xml`
+```xml
+<network-security-config>
+  <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
+```
+
+4. Add lines in `android/app/src/debug/AndroidManifest.xml`
+```diff
+    <application
+       ...
++      android:networkSecurityConfig="@xml/network_security_config"
++      tools:replace="android:networkSecurityConfig"
+       ...
+    />
+```
+
+5. For SBP payments add your unique app schema in `android/app/src/main/res/values/string.xml` [Details see on git.yoomoney.ru](https://git.yoomoney.ru/projects/SDK/repos/yookassa-android-sdk/browse)
+```diff
+<resources>
     ...
-+    implementation 'androidx.multidex:multidex:2.0.1'
-}
++    <string name="ym_app_scheme" translatable="false">exampleapp</string>
+    ...
+</resources>
 ```
 
-Add Yandex Client ID in `android/app/build.gradle`
-```groovy
-android {
-    defaultConfig {
-        manifestPlaceholders = [YANDEX_CLIENT_ID: "ваш id приложения в Яндекс.Паспорте"]
-    }
-}
-```
 
 iOS
 ---
 
-Update your `ios/Podfile`
+Min CocoaPods version: 1.13.0
+
+Min iOS version: 14.0
+
+1. Add dependency in `ios/Podfile`
 ```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://git.yoomoney.ru/scm/sdk/cocoa-pod-specs.git'
+
+...
+
+platform :ios, '14.0'
+use_frameworks!
+
+...
+
 target 'MyApp' do
-
-    # ... other dependencies
-
-  # Yandex payment
   pod 'YooKassaPayments',
-  :build_type => :dynamic_framework,
-  :git => 'https://github.com/yoomoney/yookassa-payments-swift.git',
-  :tag => '5.2.0'
+   :git => 'https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git',
+   :tag => '6.17.0'
+
+# ... other dependencies
 
 end
 ```
 
-Install pods in `ios`
+2. Install pods in `ios`
 ```bash
 pod install
-```
-
-Open newly generated `.xcworkspace` in XCode and create new swift file.
-Be sure, that it have Foundation import
-```swift
-import Foundation
-```
-
-Create `Frameworks` directory inside `ios` folder
-```bash
-cd ios && mkdir Frameworks
-```
-
-Put inside `ios/Frameworks` `TrustDefender.framework` (you should receive your own TrustDefender.framework from Yandex support).
-
-Be sure, that TrustDefender has Header folder inside it
-![trustdefender](./.github/trustdefender.png)
-
-Roadmap
-=======
-
-- [x] React Native 60.5
-- [x] Types embedded
-- [x] Android support
-- [x] iOS support
-- [x] Bank card, Yandex Wallet, Sberbank, Google Pay and Apple Pay payment types support (you should properly configure your shop for this)
-- [ ] Change color scheme
-- [ ] Configure test environment
-
-If you have a question or need specific feature, feel free to [open an issue](https://github.com/lamantin-group/react-native-yandex-payment/issues/new) or create pull request.
-
-
----
-```
-The MIT License
-
-Copyright (c) 2010-2019 Lamantin Group, LTD. https://lamantin.group
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
 ```
