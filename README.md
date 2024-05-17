@@ -5,6 +5,19 @@ Android library: [6.7.0](https://git.yoomoney.ru/projects/SDK/repos/yookassa-and
 
 iOS library: [6.17.0](https://git.yoomoney.ru/projects/SDK/repos/yookassa-payments-swift/browse)
 
+Install
+=======
+
+yarn
+```bash
+yarn add react-native-yookassa
+```
+
+npm
+```bash
+npm install react-native-yookassa --save
+```
+
 Usage
 =====
 
@@ -24,20 +37,21 @@ const payment: Payment = {
     yooKassaClientId: 'SHOP_ID',
     savePaymentMethod: 'OFF', // 'ON' | 'OFF' | 'USER_SELECTS'
 }
-const paymentToken: PaymentToken = await YandexPayment.show(shop, payment)
-console.warn(paymentToken.token) // payment token
-console.warn(paymentToken.type) // payment method type
-```
 
-Install
-=======
+try {
+  const paymentToken: PaymentToken = await YandexPayment.show(shop, payment)
+  console.warn(paymentToken.token) // payment token
+  console.warn(paymentToken.type) // payment method type
 
-```bash
-npm install react-native-yookassa --save
-```
-or
-```bash
-yarn add react-native-yookassa
+// send token to your backend and get requestUrl for payment confirmation
+// const requestUrl = <FETCH_FROM_BACKEND>
+
+  await YandexPayment.show3ds(requestUrl, paymentToken.type)
+
+  YandexPayment.close()
+} catch (e) {
+  console.error('Payment error')
+}
 ```
 
 Android
