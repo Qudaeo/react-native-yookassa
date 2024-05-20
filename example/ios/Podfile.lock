@@ -1237,27 +1237,8 @@ PODS:
     - React-logger (= 0.74.1)
     - React-perflogger (= 0.74.1)
     - React-utils (= 0.74.1)
-  - RNYooKassaPayments (2.0.0):
-    - DoubleConversion
-    - glog
-    - hermes-engine
-    - RCT-Folly (= 2024.01.01.00)
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Codegen
+  - RNYooKassaPayments (2.1.2):
     - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-ImageManager
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-rendererdebug
-    - React-utils
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - Yoga
     - YooKassaPayments
   - SocketRocket (0.7.0)
   - SPaySDK (1.0.9)
@@ -1570,7 +1551,7 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 86b9c5bccd239d91da33e08b4c58c6a40b7fdb48
   React-utils: 8e9c5cd66f0788e156a1fcb5cd69593ec8607611
   ReactCommon: eb4c4a9c43fcc0d93f922d0fdada24638429e515
-  RNYooKassaPayments: 5fe0f7b1c0e50c029dcdd9d648829d3688b15f59
+  RNYooKassaPayments: a21385301424ff71c37a838ab57550387b687c4f
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   SPaySDK: 1015f868b6e9255457704cd6a3d051829263661a
   Yoga: dafebc41bc66910af33077aaa41078e89fd635bf
