@@ -31,6 +31,7 @@ export class YandexPayment {
       if (result !== 'RESULT_OK') {
         throw new Error('3ds cancelled');
       }
+      return result
     });
   }
 
