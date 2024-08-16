@@ -64,7 +64,7 @@ PODS:
   - boost (1.84.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.75.1)
-  - FMobileSdk (2.0.0.1230)
+  - FMobileSdk (2.0.0-1231)
   - fmt (9.1.0)
   - FunctionalSwift (2.0.7)
   - glog (0.3.5)
@@ -1576,8 +1576,9 @@ PODS:
   - SocketRocket (0.7.0)
   - SPaySDK (1.0.9)
   - Yoga (0.0.0)
-  - YooKassaPayments (6.17.0):
+  - YooKassaPayments (6.18.0):
     - AppMetricaAnalytics (~> 5.2.0)
+    - FMobileSdk (~> 2.0.0-1231)
     - MoneyAuth (~> 10.13.0)
     - SPaySDK (~> 1.0.8)
     - YooKassaPaymentsApi (~> 2.22.0)
@@ -1663,7 +1664,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNYooKassaPayments (from `../..`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
-  - YooKassaPayments (from `https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git`, tag `6.17.0`)
+  - YooKassaPayments (from `https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git`, tag `6.18.0`)
 
 SPEC REPOS:
   https://git.yoomoney.ru/scm/sdk/cocoa-pod-specs.git:
@@ -1826,12 +1827,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
   YooKassaPayments:
     :git: https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git
-    :tag: 6.17.0
+    :tag: 6.18.0
 
 CHECKOUT OPTIONS:
   YooKassaPayments:
     :git: https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git
-    :tag: 6.17.0
+    :tag: 6.18.0
 
 SPEC CHECKSUMS:
   AppMetrica_FMDB: 86a7247cecf4b315735b119f8547779bffca535a
@@ -1853,7 +1854,7 @@ SPEC CHECKSUMS:
   boost: 4cb898d0bf20404aab1850c656dcea009429d6c1
   DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   FBLazyVector: a3071c12f1650bfa84f2815e9982426256a0aae1
-  FMobileSdk: 8c49b5c8207eb4b92df761bbf16486f03bdac6ac
+  FMobileSdk: a7b555198f03785af1a6064db57545c49694c1cf
   fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
   FunctionalSwift: 89f68db7d8cf103a4dc0878fbaa007a2a5532485
   glog: 69ef571f3de08433d766d614c73a9838a06bf7eb
@@ -1919,13 +1920,13 @@ SPEC CHECKSUMS:
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   SPaySDK: 1015f868b6e9255457704cd6a3d051829263661a
   Yoga: 01d87dd4b7b305f68d039a946815e8658d9cbb51
-  YooKassaPayments: 4f5ddd8f19a453af3536e1bd1ce86d9e9e557073
+  YooKassaPayments: 6eedc5fa58008e076cf19994faba77f84b92336d
   YooKassaPaymentsApi: 88ecca54eaf785787eeb1682f352016757ec0cdc
   YooKassaWalletApi: 034a9d4f122557377ae3b9284e6292603fb38e6b
   YooMoneyCoreApi: f53a22898878aab2f07449351a8a08f4918a6100
   YooMoneySessionProfiler: b1522da100bf239eac6fba568fbf9dca677f9b25
   YooMoneyUI: ca2a00d2654f2e3bb78de6ca2b953e514741c868
 
-PODFILE CHECKSUM: f0fab3fe2b048635087476d6c4455c89e615b738
+PODFILE CHECKSUM: 2eec9fe0f57276702501e328cbe72a60d1fa529e
 
 COCOAPODS: 1.15.2
