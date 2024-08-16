@@ -66,7 +66,6 @@
     "@commitlint/config-conventional": "19.2.2",
     "@evilmartians/lefthook": "1.7.12",
     "@react-native/eslint-config": "0.75.1",
-    "@release-it/conventional-changelog": "8.0.1",
     "@types/jest": "^29.5.5",
     "@types/react": "18.3.3",
     "commitlint": "^17.0.2",
@@ -113,11 +112,6 @@
     },
     "github": {
       "release": true
-    },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "preset": "angular"
-      }
     }
   },
   "eslintConfig": {
