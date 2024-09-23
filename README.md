@@ -101,6 +101,12 @@ minSdkVersion = 24
 </resources>
 ```
 
+6. Add lines in `android/build.gradle`
+allprojects {
+    repositories {
+        maven {url 'https://developer.huawei.com/repo/'}
+    }
+}
 
 iOS
 ---
