@@ -108,6 +108,17 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
         }
     }
     
+    func didFailConfirmation(error: YooKassaPayments.YooKassaPaymentsError?) {
+        DispatchQueue.main.async {
+            if let rejecter = self.storedRejecter {
+                rejecter("FAIL", "FAIL_CONFIRMATION", error)
+            }
+            self.storedResolver = nil
+            self.storedRejecter = nil
+            self.viewController?.dismiss(animated: true)
+        }
+    }
+    
     func tokenizationModule(_ module: TokenizationModuleInput,
                             didTokenize token: YooKassaPayments.Tokens,
                             paymentMethodType: YooKassaPayments.PaymentMethodType) {
@@ -140,8 +151,6 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
                 return "YOO_MONEY"
             case .sberbank:
                 return "SBERBANK"
-            case .applePay:
-                return "PAY"
             default:
               return "BANK_CARD"
         }
@@ -155,8 +164,6 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
                 return .yooMoney
             case "SBERBANK":
                 return .sberbank
-            case "PAY":
-                return .applePay
             default:
               return .bankCard
         }
@@ -173,13 +180,11 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
                 set.insert(.bankCard)
             } else if type == "SBERBANK" {
                 set.insert(.sberbank)
-            } else if type == "PAY" {
-                set.insert(.applePay)
             }
         }
         
         if set.isEmpty {
-            return [.bankCard, .yooMoney, .applePay, .sberbank]
+            return [.bankCard, .yooMoney, .sberbank]
         } else {
             return set
         }

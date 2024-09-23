@@ -1,9 +1,9 @@
 Yookassa Checkout on React Native
 =====
 
-Android library: [6.11.0](https://git.yoomoney.ru/projects/SDK/repos/yookassa-android-sdk/browse)
+Android library: [7.0.0](https://git.yoomoney.ru/projects/SDK/repos/yookassa-android-sdk/browse)
 
-iOS library: [6.18.0](https://git.yoomoney.ru/projects/SDK/repos/yookassa-payments-swift/browse)
+iOS library: [7.1.0](https://git.yoomoney.ru/projects/SDK/repos/yookassa-payments-swift/browse)
 
 Install
 =======
@@ -125,7 +125,7 @@ target 'MyApp' do
   pod 'YooKassaPayments',
    :build_type => :dynamic_framework,
    :git => 'https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git',
-   :tag => '6.17.0'
+   :tag => '7.1.0'
 
 # ... other dependencies
 
