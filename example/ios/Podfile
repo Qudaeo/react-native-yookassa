@@ -17,7 +17,7 @@ target 'YookassaExample' do
   pod 'YooKassaPayments',
    :build_type => :dynamic_framework,
    :git => 'https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git',
-   :tag => '7.1.0'
+   :tag => '7.2.0'
 
   config = use_native_modules!
 
