@@ -2,13 +2,11 @@ package group.lamantin.yandex.payment.result
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
-/**
- * @since 2019
- * @author Anton Vlasov - whalemare
- */
 class TransparentActivity: AppCompatActivity() {
 
   interface ActivityResultListener {
@@ -17,26 +15,19 @@ class TransparentActivity: AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    startActivityForResult(getIntentForStart(), REQUEST_CODE)
+
+    val intent = getIntentForStart()
+    resultLauncher.launch(intent)
   }
 
-  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    super.onActivityResult(requestCode, resultCode, data)
-
-    if (requestCode == REQUEST_CODE) {
-      RESULT_OK
-      listener!!.onActivityResult(requestCode, resultCode, data)
-      this.finish()
-    }
-  }
-
-  override fun onBackPressed() {
-    super.onBackPressed()
+  private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+    listener!!.onActivityResult(REQUEST_CODE, result.resultCode, result.data)
+    this.finish()
   }
 
   companion object {
     private var listener: ActivityResultListener? = null
-    private val REQUEST_CODE = 123
+    private const val REQUEST_CODE = 123
 
     @JvmStatic
     fun intentForResult(context: Context, intent: Intent, listener: ActivityResultListener): Intent {
@@ -49,7 +40,11 @@ class TransparentActivity: AppCompatActivity() {
     }
 
     fun TransparentActivity.getIntentForStart(): Intent {
-      return intent.getBundleExtra("ARGS")!!.getParcelable("TransparentActivity_INTENT")!!
+      if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) // API 33
+        @Suppress("DEPRECATION")
+        return intent.getBundleExtra("ARGS")!!.getParcelable("TransparentActivity_INTENT")!!
+      else
+        return intent.getBundleExtra("ARGS")!!.getParcelable("TransparentActivity_INTENT", Intent::class.java)!!
     }
   }
 
