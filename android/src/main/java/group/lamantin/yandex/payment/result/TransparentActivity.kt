@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 class TransparentActivity: AppCompatActivity() {
 
   interface ActivityResultListener {
-    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
+    fun onActivityResult(resultCode: Int, data: Intent?)
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,13 +21,12 @@ class TransparentActivity: AppCompatActivity() {
   }
 
   private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-    listener!!.onActivityResult(REQUEST_CODE, result.resultCode, result.data)
+    listener!!.onActivityResult(result.resultCode, result.data)
     this.finish()
   }
 
   companion object {
     private var listener: ActivityResultListener? = null
-    private const val REQUEST_CODE = 123
 
     @JvmStatic
     fun intentForResult(context: Context, intent: Intent, listener: ActivityResultListener): Intent {

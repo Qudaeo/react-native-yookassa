@@ -55,7 +55,7 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
                     intent,
                     object : ActivityResultListener {
                         override fun onSuccess(result: Result) {
-                            val tokenizationResult: TokenizationResult = Checkout.createTokenizationResult(result.data!!)
+                            val tokenizationResult: TokenizationResult = Checkout.createTokenizationResult(result.data()!!)
 
                             val successResult = WritableNativeArray()
                             successResult.pushString(tokenizationResult.paymentToken)
@@ -102,14 +102,14 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
 
                         override fun onFailed(result: Result) {
                             val map = WritableNativeMap()
-                            if (result.data != null) {
+                            if (result.data() != null) {
                                 // WebViewClient.ERROR_* или Checkout.ERROR_NOT_HTTPS_URL
-                                result.data?.getIntExtra(Checkout.EXTRA_ERROR_CODE, 0)?.let { map.putInt(EXTRA_ERROR_CODE, it) }
-                                map.putString(EXTRA_ERROR_DESCRIPTION, result.data?.getStringExtra(Checkout.EXTRA_ERROR_DESCRIPTION))
-                                map.putString(EXTRA_ERROR_FAILING_URL, result.data?.getStringExtra(Checkout.EXTRA_ERROR_FAILING_URL))
+                                result.data()?.getIntExtra(Checkout.EXTRA_ERROR_CODE, 0)?.let { map.putInt(EXTRA_ERROR_CODE, it) }
+                                map.putString(EXTRA_ERROR_DESCRIPTION, result.data()?.getStringExtra(Checkout.EXTRA_ERROR_DESCRIPTION))
+                                map.putString(EXTRA_ERROR_FAILING_URL, result.data()?.getStringExtra(Checkout.EXTRA_ERROR_FAILING_URL))
                             }
 
-                            if (result.resultCode == Checkout.RESULT_ERROR) {
+                            if (result.resultCode() == Checkout.RESULT_ERROR) {
                                 promise.reject(RESULT_ERROR, map)
                             } else {
                                 promise.reject(RESULT_3DS_CLOSED, map)

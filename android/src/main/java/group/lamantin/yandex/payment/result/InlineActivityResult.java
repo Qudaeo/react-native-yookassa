@@ -23,8 +23,8 @@ public class InlineActivityResult {
     //the listener we will give to the fragment
     private final TransparentActivity.ActivityResultListener listener = new TransparentActivity.ActivityResultListener() {
         @Override
-        public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            onReceivedActivityResult(requestCode, resultCode, data);
+        public void onActivityResult(int resultCode, Intent data) {
+            onReceivedActivityResult(resultCode, data);
         }
     };
     //endregion
@@ -41,8 +41,8 @@ public class InlineActivityResult {
         }
     }
 
-    private void onReceivedActivityResult(int requestCode, int resultCode, @Nullable final Intent data) {
-        final Result result = new Result(this, requestCode, resultCode, data);
+    private void onReceivedActivityResult(int resultCode, @Nullable final Intent data) {
+        final Result result = new Result(resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             for (ActivityResultListener listener : responseListeners) {
                 listener.onSuccess(result);
