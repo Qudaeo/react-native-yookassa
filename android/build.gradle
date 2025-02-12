@@ -5,9 +5,17 @@ buildscript {
         mavenCentral()
     }
 
+    ext.safeExtGet = {prop, fallback ->
+        def props = (prop instanceof String) ? [prop] : prop
+        def result = props.find { key ->
+            return rootProject.ext.has(key)
+        }
+        return result ? rootProject.ext.get(result) : fallback
+    }
+
     dependencies {
         classpath "com.android.tools.build:gradle:8.3.2"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${safeExtGet('kotlinVersion', kotlin_version)}"
     }
 }
 
