@@ -47,5 +47,5 @@ dependencies {
     // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'
-    implementation 'ru.yoomoney.sdk.kassa.payments:yookassa-android-sdk:7.0.0'
+    implementation 'ru.yoomoney.sdk.kassa.payments:yookassa-android-sdk:7.0.3'
 }
