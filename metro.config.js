@@ -1,10 +1,13 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const path = require('path')
-const blacklist = require('metro-config/src/defaults/blacklist')
-const escape = require('escape-string-regexp')
-const pak = require('./package.json')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const blacklist = require('metro-config/src/defaults/blacklist');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const escape = require('escape-string-regexp');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const pak = require('./package.json');
 
-const peerDependencies = Object.keys(pak.peerDependencies)
+const peerDependencies = Object.keys(pak.peerDependencies);
 
 module.exports = {
   transformer: {
@@ -28,4 +31,4 @@ module.exports = {
       'react-native-payment': __dirname,
     },
   },
-}
+};

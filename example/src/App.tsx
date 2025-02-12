@@ -208,7 +208,7 @@ class App extends Component {
                     yooKassaClientId: config.id,
                   }
                 );
-                YandexPayment.close()
+                YandexPayment.close();
                 console.warn(JSON.stringify(result));
               } catch (e) {
                 console.error(e);

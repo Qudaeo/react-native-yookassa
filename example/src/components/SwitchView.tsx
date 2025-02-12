@@ -1,22 +1,25 @@
-import React, { Component } from 'react'
-import { Switch, Text, View, ViewStyle } from 'react-native'
+import React, { Component } from 'react';
+import { Switch, Text, View, type ViewStyle } from 'react-native';
 
 interface SwitchViewProps {
-  title: string
-  description: string
-  descriptionUncheked: string
-  onChanges: (checked: boolean) => void
-  checked: boolean
-  style: ViewStyle
-  styleSwitch: ViewStyle
-  internal: boolean
+  title: string;
+  description: string;
+  descriptionUncheked: string;
+  onChanges: (checked: boolean) => void;
+  checked: boolean;
+  style: ViewStyle;
+  styleSwitch: ViewStyle;
+  internal: boolean;
 }
 
 interface SwitchViewState {
-  checked: boolean
+  checked: boolean;
 }
 
-export default class SwitchView extends Component<SwitchViewProps, SwitchViewState> {
+export default class SwitchView extends Component<
+  SwitchViewProps,
+  SwitchViewState
+> {
   static defaultProps = {
     title: null,
     description: null,
@@ -27,18 +30,18 @@ export default class SwitchView extends Component<SwitchViewProps, SwitchViewSta
     style: {},
     styleSwitch: {},
     internal: false,
-  }
+  };
 
   state = {
     checked: false,
-  }
+  };
 
   componentDidMount() {
-    const { internal, checked } = this.props
+    const { internal, checked } = this.props;
     if (internal) {
       this.setState({
         checked: checked,
-      })
+      });
     }
   }
 
@@ -48,36 +51,45 @@ export default class SwitchView extends Component<SwitchViewProps, SwitchViewSta
         if (this.props.checked !== this.state.checked) {
           this.setState({
             checked: this.props.checked,
-          })
+          });
         }
       }
     }
   }
 
   render() {
-    const { title, description, descriptionUncheked, onChanges, style, internal } = this.props
-    const checked = internal ? this.state.checked : this.props.checked
-    const fallback = descriptionUncheked ? descriptionUncheked : description
-    const selectedDescription = checked ? description : fallback
+    const {
+      title,
+      description,
+      descriptionUncheked,
+      onChanges,
+      style,
+      internal,
+    } = this.props;
+    const checked = internal ? this.state.checked : this.props.checked;
+    const fallback = descriptionUncheked ? descriptionUncheked : description;
+    const selectedDescription = checked ? description : fallback;
     return (
       <View style={{ flexDirection: 'row', alignItems: 'center', ...style }}>
         <View style={{ flexGrow: 1, flexShrink: 1 }}>
           {title && <Text style={{ fontWeight: '500' }}>{title}</Text>}
-          {selectedDescription && <Text style={[{ marginTop: 8 }]}>{selectedDescription}</Text>}
+          {selectedDescription && (
+            <Text style={[{ marginTop: 8 }]}>{selectedDescription}</Text>
+          )}
         </View>
         <Switch
           style={{ marginStart: 16 }}
           value={checked}
-          onValueChange={checkedChanges => {
+          onValueChange={(checkedChanges) => {
             if (internal) {
               this.setState({
                 checked: checkedChanges,
-              })
+              });
             }
-            onChanges(checkedChanges)
+            onChanges(checkedChanges);
           }}
         />
       </View>
-    )
+    );
   }
 }

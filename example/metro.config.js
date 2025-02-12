@@ -1,7 +1,12 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const escape = require('escape-string-regexp');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const exclusionList = require('metro-config/src/defaults/exclusionList');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const pak = require('../package.json');
 
 const root = path.resolve(__dirname, '..');
