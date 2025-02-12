@@ -56,10 +56,12 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
                     object : ActivityResultListener {
                         override fun onSuccess(result: Result) {
                             val tokenizationResult: TokenizationResult = Checkout.createTokenizationResult(result.data!!)
-                            val result = WritableNativeArray()
-                            result.pushString(tokenizationResult.paymentToken)
-                            result.pushString(tokenizationResult.paymentMethodType.toString())
-                            promise.resolve(result)
+
+                            val successResult = WritableNativeArray()
+                            successResult.pushString(tokenizationResult.paymentToken)
+                            successResult.pushString(tokenizationResult.paymentMethodType.toString())
+ 
+                            promise.resolve(successResult)
                         }
 
                         override fun onFailed(result: Result) {
