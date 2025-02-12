@@ -10,10 +10,12 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
     var storedResolver: RCTPromiseResolveBlock?
     var storedRejecter: RCTPromiseRejectBlock?
     var viewController: (UIViewController & TokenizationModuleInput)?
-    
+
     @objc
     func show3ds(_ requestUrl: String,
                  paymentType: String,
+                 clientApplicationKey: String,
+                 shopId: String,
                  resolver: @escaping RCTPromiseResolveBlock,
                  rejecter: @escaping RCTPromiseRejectBlock) -> Void {
         // decline previous callback
@@ -35,7 +37,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
             }
         }
     }
-    
+
     @objc
     func attach(_ map: NSDictionary,
                 resolver: @escaping RCTPromiseResolveBlock,
@@ -53,7 +55,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
             description: map["SHOP_DESCRIPTION"] as! String,
             returnUrl: map["SHOP_RETURN_URL"] as! String
         )
-        
+
         let payment = Payment(
             amount: map["PAYMENT_AMOUNT"] as! Double,
             currency: stringToCurrency(string: map["PAYMENT_CURRENCY"] as! String),
@@ -61,7 +63,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
             savePaymentMethod: stringToSavePaymentType(string: map["PAYMENT_SAVE_TYPE"] as! String),
             moneyAuthClientId: map["PAYMENT_YOO_MONEY_CLIENT_ID"] as! String
         )
-        
+
         let moduleInputData = TokenizationModuleInputData(
             clientApplicationKey: shop.token,
             shopName: shop.name,
@@ -77,14 +79,14 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
             inputData: inputData,
             moduleOutput: self
         )
-        
+
         DispatchQueue.main.async {
             let rootViewController = UIApplication
                 .shared.windows.filter {$0.isKeyWindow}.first!.rootViewController
             rootViewController?.present(self.viewController!, animated: true, completion: nil)
         }
     }
-    
+
     // TokenizationModuleOutput interface callbacks
     func didSuccessfullyPassedCardSec(on module: TokenizationModuleInput) {
         DispatchQueue.main.async {
@@ -96,7 +98,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
             self.viewController?.dismiss(animated: true)
         }
     }
-    
+
     func didFinishConfirmation(paymentMethodType: YooKassaPayments.PaymentMethodType) {
         DispatchQueue.main.async {
             if let resolver = self.storedResolver {
@@ -107,7 +109,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
             self.viewController?.dismiss(animated: true)
         }
     }
-    
+
     func didFailConfirmation(error: YooKassaPayments.YooKassaPaymentsError?) {
         DispatchQueue.main.async {
             if let rejecter = self.storedRejecter {
@@ -118,7 +120,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
             self.viewController?.dismiss(animated: true)
         }
     }
-    
+
     func tokenizationModule(_ module: TokenizationModuleInput,
                             didTokenize token: YooKassaPayments.Tokens,
                             paymentMethodType: YooKassaPayments.PaymentMethodType) {
@@ -142,7 +144,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
             self.viewController?.dismiss(animated: true)
         }
     }
-    
+
     func paymentTypeToString(paymentType: YooKassaPayments.PaymentMethodType) -> String {
         switch paymentType {
             case .bankCard:
@@ -155,7 +157,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
               return "BANK_CARD"
         }
     }
-    
+
     func stringToPaymentType(paymentType: String) -> YooKassaPayments.PaymentMethodType {
         switch paymentType {
             case "BANK_CARD":
@@ -182,7 +184,7 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
                 set.insert(.sberbank)
             }
         }
-        
+
         if set.isEmpty {
             return [.bankCard, .yooMoney, .sberbank]
         } else {

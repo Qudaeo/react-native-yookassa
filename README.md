@@ -46,7 +46,12 @@ try {
 // send token to your backend and get requestUrl for payment confirmation
 // const requestUrl = <FETCH_FROM_BACKEND>
 
-  await YandexPayment.show3ds(requestUrl, paymentToken.type)
+  await YandexPayment.show3ds(
+    requestUrl,
+    paymentToken.type,
+    clientApplicationKey,
+    shopId,
+  )
 
   YandexPayment.close()
 } catch (e) {

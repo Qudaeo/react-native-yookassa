@@ -30,16 +30,21 @@ export class YandexPayment {
 
   static show3ds(
     requestUrl: string,
-    paymentType: PaymentType
+    paymentType: PaymentType,
+    clientApplicationKey: string,
+    shopId: string
   ): Promise<'RESULT_OK'> {
-    return YandexPaymentNative.show3ds(requestUrl, paymentType).then(
-      (result?: 'RESULT_OK') => {
-        if (result !== 'RESULT_OK') {
-          throw new Error('3ds cancelled');
-        }
-        return result;
+    return YandexPaymentNative.show3ds(
+      requestUrl,
+      paymentType,
+      clientApplicationKey,
+      shopId
+    ).then((result?: 'RESULT_OK') => {
+      if (result !== 'RESULT_OK') {
+        throw new Error('3ds cancelled');
       }
-    );
+      return result;
+    });
   }
 
   static close() {

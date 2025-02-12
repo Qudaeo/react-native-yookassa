@@ -18,6 +18,8 @@ RCT_EXTERN_METHOD(close)
 
 RCT_EXTERN_METHOD(show3ds: (NSString *) requestUrl
                   paymentType:(NSString *) paymentType
+                  clientApplicationKey:(NSString *) clientApplicationKey
+                  shopId:(NSString *) shopId
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 

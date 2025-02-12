@@ -78,9 +78,17 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
     }
 
     @ReactMethod
-    fun show3ds(requestUrl: String, paymentType: String, promise: Promise) {
+    fun show3ds(requestUrl: String, paymentType: String, clientApplicationKey: String,
+                shopId: String, promise: Promise,
+    ) {
         try {
-            val intent = Checkout.create3dsIntent(currentActivity!!, requestUrl)
+            val intent = Checkout.createConfirmationIntent(
+              currentActivity!!,
+              requestUrl,
+              paymentType.toPaymentMethodType(),
+              clientApplicationKey,
+              shopId,
+            )
 
             InlineActivityResult.startForResult(
                     currentActivity as FragmentActivity,
@@ -162,21 +170,31 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
                 PaymentMethodType.YOO_MONEY.name -> set.add(PaymentMethodType.YOO_MONEY)
                 PaymentMethodType.SBP.name -> set.add(PaymentMethodType.SBP)
                 PaymentMethodType.SBERBANK.name -> set.add(PaymentMethodType.SBERBANK)
-                PaymentMethodType.GOOGLE_PAY.name, "PAY" -> set.add(PaymentMethodType.GOOGLE_PAY)
+                //PaymentMethodType.GOOGLE_PAY.name, "PAY" -> set.add(PaymentMethodType.GOOGLE_PAY)
             }
         }
         if (set.isEmpty()) {
-            set.addAll(PaymentMethodType.values())
+            set.addAll(PaymentMethodType.entries.toTypedArray())
         }
         return set
     }
 
     private fun String.toSavePaymentMethod(): SavePaymentMethod {
-        when (this) {
-            SavePaymentMethod.ON.name -> return SavePaymentMethod.ON
-            SavePaymentMethod.OFF.name -> return SavePaymentMethod.OFF
-            SavePaymentMethod.USER_SELECTS.name -> return SavePaymentMethod.USER_SELECTS
-            else -> return SavePaymentMethod.OFF
-        }
+      return when (this) {
+        SavePaymentMethod.ON.name -> SavePaymentMethod.ON
+        SavePaymentMethod.OFF.name -> SavePaymentMethod.OFF
+        SavePaymentMethod.USER_SELECTS.name -> SavePaymentMethod.USER_SELECTS
+        else -> SavePaymentMethod.OFF
+      }
     }
+
+  private fun String.toPaymentMethodType(): PaymentMethodType {
+    return when (this) {
+      PaymentMethodType.BANK_CARD.name -> PaymentMethodType.BANK_CARD
+      PaymentMethodType.YOO_MONEY.name -> PaymentMethodType.YOO_MONEY
+      PaymentMethodType.SBP.name -> PaymentMethodType.SBP
+      PaymentMethodType.SBERBANK.name -> PaymentMethodType.SBERBANK
+      else -> PaymentMethodType.BANK_CARD
+    }
+  }
 }
