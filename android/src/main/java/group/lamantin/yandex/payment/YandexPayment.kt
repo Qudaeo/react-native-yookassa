@@ -31,18 +31,18 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
             val payment = mapPayment(map)
 
             val paymentParameters = PaymentParameters(
-                    Amount(BigDecimal(payment.amount), Currency.getInstance(payment.currency)),
-                    shop.name,
-                    shop.description,
-                    shop.token,
-                    shop.id,
-                    payment.savePaymentMethod,
-                    payment.types,
-                    null,
-                    null,
-                    null,
-                    GooglePayParameters(),
-                    payment.yooKassaClientId,
+                    amount = Amount(BigDecimal(payment.amount), Currency.getInstance(payment.currency)),
+                    title = shop.name,
+                    subtitle = shop.description,
+                    clientApplicationKey = shop.token,
+                    shopId = shop.id,
+                    savePaymentMethod = payment.savePaymentMethod,
+                    paymentMethodTypes = payment.types,
+                    gatewayId = null,
+                    customReturnUrl = null,
+                    userPhoneNumber = null,
+                    authCenterClientId = payment.yooKassaClientId,
+                    customerId = null,
             )
 
             // expose to JS
@@ -60,7 +60,7 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
                             val successResult = WritableNativeArray()
                             successResult.pushString(tokenizationResult.paymentToken)
                             successResult.pushString(tokenizationResult.paymentMethodType.toString())
- 
+
                             promise.resolve(successResult)
                         }
 
