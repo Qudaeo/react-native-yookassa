@@ -1,8 +1,8 @@
 {
   "name": "react-native-yookassa",
   "version": "3.0.0",
-  "author": "lamantin.group",
-  "description": "Library for implement Yandex Checkout",
+  "author": "Qudaeo",
+  "description": "YooKassa payments in React Native (Android % iOS)",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/src/index.d.ts",
@@ -37,18 +37,14 @@
     "release": "release-it"
   },
   "keywords": [
-    "react-native-yandex-payment",
-    "yandex-checkout",
-    "yandex checkout",
-    "yandex-payment",
-    "yandex payment",
-    "yandex",
+    "react-native-yookassa",
+    "kassa",
     "payment",
-    "checkout",
-    "money",
-    "react-native",
-    "ios",
-    "android"
+    "bank",
+    "visa",
+    "mastercard",
+    "sbp",
+    "react-native"
   ],
   "repository": {
     "type": "git",
