@@ -9,8 +9,6 @@ import {
   type ViewStyle,
 } from 'react-native';
 
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-
 import YandexPayment, { PaymentType, Currency } from '../../'
 import SwitchView from './components/SwitchView';
 import config from './config';
@@ -24,15 +22,7 @@ interface ButtonProps {
 const Button: FC<ButtonProps> = ({ onPress, style, title }) => {
   return (
     <TouchableOpacity
-      style={[
-        {
-          alignItems: 'center',
-          alignContent: 'center',
-          padding: 16,
-          alignSelf: 'center',
-        },
-        style,
-      ]}
+      style={[styles.button,style]}
       onPress={onPress}
     >
       <Text>{title}</Text>
@@ -60,93 +50,35 @@ const App = () => {
   //   setState({ ...state, currency });
   // };
 
+  const allPaymentTypes: PaymentType[] = [
+    'BANK_CARD',
+    'YOO_MONEY',
+    'SBERBANK',
+    'GOOGLE_PAY',
+    'SBP'
+  ];
+
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={styles.scrollView}
       >
         <View>
-          <SwitchView
-            title="BANK_CARD"
-            style={{
-              backgroundColor: '#fff',
-              paddingVertical: 8,
-              marginVertical: 1,
-              paddingHorizontal: 16,
-            }}
-            checked={paymentTypes.includes('BANK_CARD')}
-            onChanges={() => {
-              changePaymentType('BANK_CARD');
-            }}
-          />
+          {allPaymentTypes.map(paymentType => (
+            <SwitchView
+              title={paymentType}
+              style={styles.switch}
+              checked={paymentTypes.includes(paymentType)}
+              onChanges={() => {
+                changePaymentType(paymentType);
+              }}
+            />
+          ))}
 
-          <SwitchView
-            title="YOO_MONEY"
-            style={{
-              backgroundColor: '#fff',
-              paddingVertical: 8,
-              marginVertical: 1,
-              paddingHorizontal: 16,
-            }}
-            checked={paymentTypes.includes('YOO_MONEY')}
-            onChanges={() => {
-              changePaymentType('YOO_MONEY');
-            }}
-          />
-
-          <SwitchView
-            title="SBERBANK"
-            style={{
-              backgroundColor: '#fff',
-              paddingVertical: 8,
-              marginVertical: 1,
-              paddingHorizontal: 16,
-            }}
-            checked={paymentTypes.includes('SBERBANK')}
-            onChanges={() => {
-              changePaymentType('SBERBANK');
-            }}
-          />
-
-          <SwitchView
-            title="GOOGLE_PAY"
-            style={{
-              backgroundColor: '#fff',
-              paddingVertical: 8,
-              marginVertical: 1,
-              paddingHorizontal: 16,
-            }}
-            checked={paymentTypes.includes('GOOGLE_PAY')}
-            onChanges={() => {
-              changePaymentType('GOOGLE_PAY');
-            }}
-          />
-
-          <SwitchView
-            title="SBP"
-            style={{
-              backgroundColor: '#fff',
-              paddingVertical: 8,
-              marginVertical: 1,
-              paddingHorizontal: 16,
-            }}
-            checked={paymentTypes.includes('SBP')}
-            onChanges={() => {
-              changePaymentType('SBP');
-            }}
-          />
-
-          <View
-            style={{
-              backgroundColor: '#fff',
-              paddingVertical: 16,
-              marginVertical: 16,
-              paddingHorizontal: 16,
-            }}
-          >
+          <View style={styles.currency}>
             <TouchableOpacity
-              style={{ flexDirection: 'row' }}
+              style={styles.row}
               onPress={() => {
                 // new SheetMenu({
                 //   title: 'Select currency:',
@@ -167,20 +99,14 @@ const App = () => {
                 // }).show()
               }}
             >
-              <Text style={{ flexGrow: 1 }}>Currency</Text>
+              <Text style={styles.flexGrow}>Currency</Text>
               <Text>{currency}</Text>
             </TouchableOpacity>
           </View>
         </View>
 
-        {/* <Text style={{marginTop: 45, color: "#000"}}>{JSON.stringify(Object.values(state.paymentTypes).filter(it => it !== null))}</Text> */}
-
         <Button
-          style={{
-            marginTop: 100,
-            backgroundColor: '#ffcc00',
-            borderRadius: 8,
-          }}
+          style={styles.payButton}
           title="YandexPayment.show()"
           onPress={async () => {
             try {
@@ -212,41 +138,38 @@ const App = () => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  button: {
+    padding: 16,
+    alignSelf: 'center',
+  },
   scrollView: {
-    backgroundColor: Colors.lighter,
+    backgroundColor: '#eee',
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  switch: {
+    backgroundColor: '#fff',
+    paddingVertical: 8,
+    marginVertical: 1,
+    paddingHorizontal: 16,
   },
-  body: {
-    backgroundColor: Colors.white,
+  payButton: {
+    marginTop: 100,
+    backgroundColor: '#ffcc00',
+    borderRadius: 8,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  row: {
+    flexDirection: 'row',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
+  flexGrow: {
+    flexGrow: 1,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  currency: {
+    backgroundColor: '#fff',
+    paddingVertical: 16,
+    marginVertical: 16,
+    paddingHorizontal: 16,
   },
 });
 
