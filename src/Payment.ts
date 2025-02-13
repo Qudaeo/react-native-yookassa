@@ -4,8 +4,8 @@ export type PaymentType =
   | 'BANK_CARD'
   | 'SBERBANK'
   | 'SBP';
-type SavePaymentMethodType = 'ON' | 'OFF' | 'USER_SELECTS';
-type Currency = 'RUB' | 'USD' | 'EUR' | 'CUSTOM';
+export type SavePaymentMethodType = 'ON' | 'OFF' | 'USER_SELECTS';
+export type Currency = 'RUB' | 'USD' | 'EUR' | 'CUSTOM';
 
 export interface Payment {
   amount: number;
