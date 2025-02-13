@@ -67,6 +67,7 @@ const App = () => {
         <View>
           {allPaymentTypes.map(paymentType => (
             <SwitchView
+              key={paymentType}
               title={paymentType}
               style={styles.switch}
               checked={paymentTypes.includes(paymentType)}
