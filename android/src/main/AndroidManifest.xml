@@ -1,13 +1,9 @@
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="group.lamantin.yandex.payment">
-
+          package="com.yookassa">
   <application>
-    <activity android:label=""
+    <activity
       android:name=".result.TransparentActivity"
       android:theme="@style/Theme.Transparent"
       />
   </application>
-
 </manifest>
-  

@@ -1,4 +1,4 @@
-package group.lamantin.yandex.payment.result
+package com.yookassa.result
 
 interface ActivityResultListener {
     fun onSuccess(result: Result)

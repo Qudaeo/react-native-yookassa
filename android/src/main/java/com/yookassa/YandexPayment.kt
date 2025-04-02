@@ -1,10 +1,10 @@
-package group.lamantin.yandex.payment
+package com.yookassa
 
 import androidx.fragment.app.FragmentActivity
 import com.facebook.react.bridge.*
-import group.lamantin.yandex.payment.result.ActivityResultListener
-import group.lamantin.yandex.payment.result.InlineActivityResult
-import group.lamantin.yandex.payment.result.Result
+import com.yookassa.result.ActivityResultListener
+import com.yookassa.result.InlineActivityResult
+import com.yookassa.result.Result
 import ru.yoomoney.sdk.kassa.payments.*
 import ru.yoomoney.sdk.kassa.payments.checkoutParameters.*
 import java.math.BigDecimal
@@ -16,7 +16,7 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
 
     override fun getConstants(): Map<String, Any> {
         val constants = HashMap<String, Any>()
-        constants["SHOP_ID"] = SHOP_ID
+        constants["SFHOP_ID"] = SHOP_ID
         constants["SHOP_TOKEN"] = SHOP_TOKEN
         constants["SHOP_NAME"] = SHOP_NAME
         constants["SHOP_DESCRIPTION"] = SHOP_DESCRIPTION

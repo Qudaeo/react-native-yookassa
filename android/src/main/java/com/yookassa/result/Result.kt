@@ -1,4 +1,4 @@
-package group.lamantin.yandex.payment.result
+package com.yookassa.result
 
 import android.content.Intent
 

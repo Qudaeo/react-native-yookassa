@@ -23,7 +23,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace "group.lamantin.yandex.payment"
+    namespace "com.yookassa"
     compileSdk 35
 
     defaultConfig {

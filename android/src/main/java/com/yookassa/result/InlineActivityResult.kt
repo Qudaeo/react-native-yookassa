@@ -1,8 +1,8 @@
-package group.lamantin.yandex.payment.result
+package com.yookassa.result
 
 import android.app.Activity
 import android.content.Intent
-import group.lamantin.yandex.payment.result.TransparentActivity.Companion.intentForResult
+import com.yookassa.result.TransparentActivity.Companion.intentForResult
 import java.lang.ref.Reference
 import java.lang.ref.WeakReference
 

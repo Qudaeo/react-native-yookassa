@@ -1,4 +1,4 @@
-package group.lamantin.yandex.payment
+package com.yookassa
 
 /**
  * @since 2019

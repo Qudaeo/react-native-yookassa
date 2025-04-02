@@ -1,4 +1,4 @@
-package group.lamantin.yandex.payment
+package com.yookassa
 
 import com.facebook.react.ReactPackage
 import com.facebook.react.bridge.NativeModule

@@ -1,4 +1,4 @@
-package group.lamantin.yandex.payment
+package com.yookassa
 
 import ru.yoomoney.sdk.kassa.payments.checkoutParameters.PaymentMethodType
 import ru.yoomoney.sdk.kassa.payments.checkoutParameters.SavePaymentMethod
