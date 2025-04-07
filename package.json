@@ -1,6 +1,6 @@
 {
   "name": "react-native-yookassa",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "author": "Qudaeo",
   "description": "YooKassa payments in React Native (Android % iOS)",
   "main": "lib/commonjs/index",
