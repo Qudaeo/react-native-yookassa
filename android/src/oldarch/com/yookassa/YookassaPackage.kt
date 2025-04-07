@@ -8,7 +8,7 @@ import com.facebook.react.uimanager.ViewManager
 class YookassaPackage : ReactPackage {
     override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
         val modules: MutableList<NativeModule> = ArrayList()
-        modules.add(YandexPayment(reactContext))
+        modules.add(YookassaModule(reactContext))
         return modules
     }
 

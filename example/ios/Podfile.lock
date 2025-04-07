@@ -88,15 +88,16 @@ PODS:
   - hermes-engine (0.77.0):
     - hermes-engine/Pre-built (= 0.77.0)
   - hermes-engine/Pre-built (0.77.0)
-  - KSCrash/Core (2.0.0-rc.8)
-  - KSCrash/Recording (2.0.0-rc.8):
+  - KSCrash/Core (2.0.0)
+  - KSCrash/Recording (2.0.0):
     - KSCrash/RecordingCore
-  - KSCrash/RecordingCore (2.0.0-rc.8):
+  - KSCrash/RecordingCore (2.0.0):
     - KSCrash/Core
-  - MoneyAuth (11.2.3):
-    - TwoFA (~> 1.3)
+  - MoneyAuth (12.1.6):
+    - TwoFA (~> 1.4)
     - YooMoneySessionProfiler
     - YooMoneyUserAuthCenterApi
+  - OpenSSL-Universal (3.3.3000)
   - RCT-Folly (2024.11.18.00):
     - boost
     - DoubleConversion
@@ -1588,25 +1589,69 @@ PODS:
     - React-logger (= 0.77.0)
     - React-perflogger (= 0.77.0)
     - React-utils (= 0.77.0)
-  - RNYooKassaPayments (2.3.0):
+  - RNYooKassaPayments (3.1.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
     - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - RNYooKassaPayments/xxxutils (= 3.1.0)
+    - Yoga
+    - YooKassaPayments
+  - RNYooKassaPayments/xxxutils (3.1.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
     - YooKassaPayments
   - SocketRocket (0.7.1)
-  - SPaySDK (2.3.1):
+  - SPaySDK (2.6.2):
     - ClickstreamSDK (~> 1.5.0)
-  - TwoFA (1.3.4):
+  - TwoFA (1.4.2):
     - YooMoneyAuthenticatorApi (~> 2.0)
     - YooMoneyCoreApi (~> 3.0)
     - YooMoneyUI (~> 7.7)
   - Yoga (0.0.0)
-  - YooKassaPayments (7.3.0):
+  - YooKassaPayments (7.4.0):
     - AppMetricaAnalytics (~> 5.8)
     - FMobileSdk (~> 2.0.0-1231)
-    - MoneyAuth (~> 11.2)
-    - SPaySDK (~> 2.3.0)
-    - YooKassaPaymentsApi (~> 2.24)
+    - MoneyAuth (~> 12.1)
+    - SPaySDK (~> 2.5)
+    - YooKassaPaymentsApi (~> 2.25)
     - YooKassaWalletApi (~> 2.7)
-  - YooKassaPaymentsApi (2.24.1):
+    - YooMoneyPinning
+  - YooKassaPaymentsApi (2.25.0):
     - FunctionalSwift
     - YooMoneyCoreApi (~> 3.1.1)
   - YooKassaWalletApi (2.7.2):
@@ -1617,9 +1662,13 @@ PODS:
     - YooMoneyCoreApi (~> 3.0)
   - YooMoneyCoreApi (3.1.1):
     - FunctionalSwift (~> 2.0)
+  - YooMoneyPinning (2.3.1):
+    - FunctionalSwift (~> 2.0)
+    - OpenSSL-Universal
+    - YooMoneyCoreApi (~> 3.0)
   - YooMoneySessionProfiler (5.3.4):
     - FMobileSdk
-  - YooMoneyUI (7.13.4):
+  - YooMoneyUI (7.13.5):
     - FunctionalSwift
   - YooMoneyUserAuthCenterApi (10.4.4):
     - FunctionalSwift (~> 2.0)
@@ -1695,7 +1744,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNYooKassaPayments (from `../..`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
-  - YooKassaPayments (from `https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git`, tag `7.3.0`)
+  - YooKassaPayments (from `https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git`, tag `7.4.0`)
 
 SPEC REPOS:
   https://git.yoomoney.ru/scm/sdk/cocoa-pod-specs.git:
@@ -1707,6 +1756,7 @@ SPEC REPOS:
     - YooKassaWalletApi
     - YooMoneyAuthenticatorApi
     - YooMoneyCoreApi
+    - YooMoneyPinning
     - YooMoneySessionProfiler
     - YooMoneyUI
     - YooMoneyUserAuthCenterApi
@@ -1733,6 +1783,7 @@ SPEC REPOS:
     - AppMetricaWebKit
     - ClickstreamSDK
     - KSCrash
+    - OpenSSL-Universal
     - SocketRocket
     - SPaySDK
 
@@ -1874,12 +1925,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
   YooKassaPayments:
     :git: https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git
-    :tag: 7.3.0
+    :tag: 7.4.0
 
 CHECKOUT OPTIONS:
   YooKassaPayments:
     :git: https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git
-    :tag: 7.3.0
+    :tag: 7.4.0
 
 SPEC CHECKSUMS:
   AppMetricaAdSupport: 030ecf754defdf915849ed5b2c0a9f2a2f44658d
@@ -1912,8 +1963,9 @@ SPEC CHECKSUMS:
   FunctionalSwift: bc40a208dd4f29100767aba35602cc231e8d355a
   glog: eb93e2f488219332457c3c4eafd2738ddc7e80b8
   hermes-engine: 1f783c3d53940aed0d2c84586f0b7a85ab7827ef
-  KSCrash: 946472c56073afdaf6bae37d886e3f562027075c
-  MoneyAuth: 63d3fbea3f6ac810a6f4362bdbf338046c8b3a4e
+  KSCrash: ad271a7799f0a2841be0fb7d6bd105444c440832
+  MoneyAuth: 714fc24f287f3e2deb7b1a90a7089261c187251e
+  OpenSSL-Universal: d776ce24dab24323e6995dfb17c64d598885d05c
   RCT-Folly: e78785aa9ba2ed998ea4151e314036f6c49e6d82
   RCTDeprecation: f5c19ebdb8804b53ed029123eb69914356192fc8
   RCTRequired: 6ae6cebe470486e0e0ce89c1c0eabb998e7c51f4
@@ -1949,10 +2001,10 @@ SPEC CHECKSUMS:
   React-performancetimeline: a23bfc89694e13ead855f25049bb9d60ce3704a2
   React-RCTActionSheet: 25eb72eabade4095bfaf6cd9c5c965c76865daa8
   React-RCTAnimation: 8efbd0a4a71fd3dbe84e6d08b92bec5728b7524b
-  React-RCTAppDelegate: 24bd0809bbd8530433071cb23624b293fc4bfe46
+  React-RCTAppDelegate: 8ff6da817adefd15d4e25ade53a477c344f9b213
   React-RCTBlob: 6056bd62a56a6d2dad55cdf195949db1de623e14
-  React-RCTFabric: dcfcbb2e59436e7424df24bea4b0918e2b15d6fa
-  React-RCTFBReactNativeSpec: f090aac2576291f571848cc408f3d200259c576d
+  React-RCTFabric: 113fe8b6532ac21a6a46700b2650b8d458020ee4
+  React-RCTFBReactNativeSpec: 4214925b1c4829fb1e73bfbacb301244b522dc11
   React-RCTImage: 7b3f38c77e183bdcb43dbcd7b5842b96c814889a
   React-RCTLinking: 6cca74db71b23f670b72e45603e615c2b72b2235
   React-RCTNetwork: 5791b0718eff20c12f6f3d62e2ad50cff4b5c8a0
@@ -1972,20 +2024,21 @@ SPEC CHECKSUMS:
   ReactAppDependencyProvider: 6e8d68583f39dc31ee65235110287277eb8556ef
   ReactCodegen: 58a974a1a86362975fd49596480c5f0f17ee06a2
   ReactCommon: e686c5766f0ebe5293be5a3957b833645cdac8ad
-  RNYooKassaPayments: 2b14e0bec0dbb0a01eb07e01ae90ccbcc293f431
+  RNYooKassaPayments: 7ab92e908f3197609d96f21536a431cfc7539e78
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  SPaySDK: 83fe00cc086260682d35ca03b38f6856f94cb583
-  TwoFA: 37e68aef2174a1954ee4c3d699b8366a38f6d92a
+  SPaySDK: 4cffeefdd962b820bc8ecd3501e7e5b7ed39ac90
+  TwoFA: 295a51b9cdce323d9dc7d37a283985eed326e2f8
   Yoga: c34725819ab0a5962e85455b9e56679b306910ee
-  YooKassaPayments: db4e3aa39428e83c19df233cc8eb842a265ab887
-  YooKassaPaymentsApi: 9475afaa4d66ed00f9553d5b8ab9dfc9f417a394
+  YooKassaPayments: 1edcef7102475b3890113bc4cb657677f78f32fc
+  YooKassaPaymentsApi: 63a1fb836f6543e306891ae9a58a55928b2df842
   YooKassaWalletApi: f7162cf7dd44a261ab1be83e66c6c67d50f90122
   YooMoneyAuthenticatorApi: 473077a60a5db1c8e1f0310f8437cab34b8e021e
   YooMoneyCoreApi: f53a22898878aab2f07449351a8a08f4918a6100
+  YooMoneyPinning: 017733bf2c38491ee93a4d22e25c0b28051b4c6d
   YooMoneySessionProfiler: 27f7eaa9b282a9cbb68cec977242b06ac2c06c2f
-  YooMoneyUI: 043bf09c7bb303ec87a7454df47172b48735f52a
+  YooMoneyUI: 5a3df6ce998e03f58f213b15ce23d28b0a1b7dcf
   YooMoneyUserAuthCenterApi: e19361858e23ef4072ffacc5b3aa1d0925714f22
 
-PODFILE CHECKSUM: 0e4165f2084add143f0180d3304a4be06583b265
+PODFILE CHECKSUM: 484aa415c9fd56f6868b2809317fc99d25d722fb
 
 COCOAPODS: 1.16.2

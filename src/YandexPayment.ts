@@ -1,13 +1,11 @@
 import type { PaymentToken } from './PaymentToken';
 import type { Payment, PaymentType } from './Payment';
 import type { Shop } from './Shop';
-import { NativeModules } from 'react-native';
-
-const YandexPaymentNative = NativeModules.YandexPayment;
+import NativeYookassa from './NativeYookassa'
 
 export class YandexPayment {
   static show(shop: Shop, payment: Payment): Promise<PaymentToken> {
-    return YandexPaymentNative.attach({
+    return NativeYookassa.attach({
       SHOP_ID: shop.id,
       SHOP_TOKEN: shop.token,
       SHOP_NAME: shop.name,
@@ -34,7 +32,7 @@ export class YandexPayment {
     clientApplicationKey: string,
     shopId: string
   ): Promise<'RESULT_OK'> {
-    return YandexPaymentNative.show3ds(
+    return NativeYookassa.show3ds(
       requestUrl,
       paymentType,
       clientApplicationKey,
@@ -48,6 +46,6 @@ export class YandexPayment {
   }
 
   static close() {
-    return YandexPaymentNative.close();
+    return NativeYookassa.close();
   }
 }

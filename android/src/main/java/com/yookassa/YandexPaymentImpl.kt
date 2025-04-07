@@ -10,11 +10,11 @@ import ru.yoomoney.sdk.kassa.payments.checkoutParameters.*
 import java.math.BigDecimal
 import java.util.*
 
-class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class YandexPaymentImpl(reactContext: ReactApplicationContext) {
 
-    override fun getName() = this.javaClass.simpleName
+    private val reactApplicationContext = reactContext
 
-    override fun getConstants(): Map<String, Any> {
+    fun getConstants(): Map<String, Any> {
         val constants = HashMap<String, Any>()
         constants["SFHOP_ID"] = SHOP_ID
         constants["SHOP_TOKEN"] = SHOP_TOKEN
@@ -24,7 +24,6 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
         return constants
     }
 
-    @ReactMethod
     fun attach(map: ReadableMap, promise: Promise) {
         try {
             val shop = mapShop(map)
@@ -47,11 +46,11 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
 
             // expose to JS
             val testParameters = TestParameters(true, false)
-            val intent = Checkout.createTokenizeIntent(currentActivity!!,
+            val intent = Checkout.createTokenizeIntent(reactApplicationContext.currentActivity!!,
                     paymentParameters, testParameters
             )
             InlineActivityResult.startForResult(
-                    currentActivity!!,
+                    reactApplicationContext.currentActivity!!,
                     intent,
                     object : ActivityResultListener {
                         override fun onSuccess(result: Result) {
@@ -74,18 +73,16 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
         }
     }
 
-    @ReactMethod
     fun close() {
         // dummy method, just for compatibility with ios
     }
 
-    @ReactMethod
     fun show3ds(requestUrl: String, paymentType: String, clientApplicationKey: String,
                 shopId: String, promise: Promise,
     ) {
         try {
             val intent = Checkout.createConfirmationIntent(
-              currentActivity!!,
+              reactApplicationContext.currentActivity!!,
               requestUrl,
               paymentType.toPaymentMethodType(),
               clientApplicationKey,
@@ -93,7 +90,7 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
             )
 
             InlineActivityResult.startForResult(
-                    currentActivity as FragmentActivity,
+                    reactApplicationContext.currentActivity as FragmentActivity,
                     intent,
                     object : ActivityResultListener {
                         override fun onSuccess(result: Result) {
@@ -122,6 +119,8 @@ class YandexPayment(reactContext: ReactApplicationContext) : ReactContextBaseJav
     }
 
     companion object {
+        const val NAME = "YandexPayment"
+
         private const val SHOP_ID = "SHOP_ID"
         private const val SHOP_TOKEN = "SHOP_TOKEN"
         private const val SHOP_NAME = "SHOP_NAME"

@@ -1,3 +1,4 @@
+ENV['RCT_NEW_ARCH_ENABLED'] = '1'
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://git.yoomoney.ru/scm/sdk/cocoa-pod-specs.git'
 
@@ -11,14 +12,13 @@ require Pod::Executable.execute_command('node', ['-p',
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
-use_frameworks!
+linkage = :dynamic
+if linkage != nil
+  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
+  use_frameworks! :linkage => linkage.to_sym
+end
 
 target 'YookassaExample' do
-  pod 'YooKassaPayments',
-   :build_type => :dynamic_framework,
-   :git => 'https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git',
-   :tag => '7.4.0'
-
   config = use_native_modules!
 
   use_react_native!(
@@ -26,6 +26,16 @@ target 'YookassaExample' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+
+  # Run Codegen during development for the example app.
+  pre_install do |installer|
+    system("cd ../../ && npx bob build --target codegen")
+  end
+
+  pod 'YooKassaPayments',
+    :build_type => :dynamic_framework,
+    :git => 'https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git',
+    :tag => '7.4.0'
 
   post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202

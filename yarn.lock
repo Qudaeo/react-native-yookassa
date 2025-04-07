@@ -10310,6 +10310,7 @@ __metadata:
   dependencies:
     "@commitlint/config-conventional": 19.7.1
     "@evilmartians/lefthook": 1.10.10
+    "@react-native-community/cli": 15.0.1
     "@react-native/eslint-config": 0.77.0
     "@types/jest": ^29.5.14
     "@types/react": ^18.3.18
@@ -12134,7 +12135,7 @@ __metadata:
 
 "typescript@patch:typescript@5.7.3#~builtin<compat/typescript>, typescript@patch:typescript@^4.6.4 || ^5.2.2#~builtin<compat/typescript>":
   version: 5.7.3
-  resolution: "typescript@patch:typescript@npm%3A5.7.3#~builtin<compat/typescript>::version=5.7.3&hash=29ae49"
+  resolution: "typescript@patch:typescript@npm%3A5.7.3#~builtin<compat/typescript>::version=5.7.3&hash=14eedb"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver

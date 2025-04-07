@@ -61,6 +61,7 @@
   "devDependencies": {
     "@commitlint/config-conventional": "19.7.1",
     "@evilmartians/lefthook": "1.10.10",
+    "@react-native-community/cli": "15.0.1",
     "@react-native/eslint-config": "0.77.0",
     "@types/jest": "^29.5.14",
     "@types/react": "^18.3.18",
@@ -156,5 +157,13 @@
         }
       ]
     ]
+  },
+  "codegenConfig": {
+    "name": "RNYookassaSpec",
+    "type": "modules",
+    "jsSrcsDir": "src",
+    "android": {
+      "javaPackageName": "com.yookassa"
+    }
   }
 }

@@ -1,12 +1,13 @@
-//
-//  YandexPayment.m
-//  MyFramework
-//
-//  Created by Антон Власов on 04/09/2019.
-//  Copyright © 2019 whalemare. All rights reserved.
-//
+#import <Foundation/Foundation.h>
 
-#import "MyFramework-Bridging-Header.h"
+#import "React/RCTBridgeModule.h"
+#import "React/RCTViewManager.h"
+
+#ifdef RCT_NEW_ARCH_ENABLED
+#import <RNYookassaSpec/RNYookassaSpec.h>
+#endif
+
+using namespace facebook::react;
 
 @interface RCT_EXTERN_MODULE(YandexPayment, RCTViewManager)
 
@@ -22,5 +23,13 @@ RCT_EXTERN_METHOD(show3ds: (NSString *) requestUrl
                   shopId:(NSString *) shopId
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
+
+#ifdef RCT_NEW_ARCH_ENABLED
+ - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
+    (const facebook::react::ObjCTurboModule::InitParams &)params
+ {
+    return std::make_shared<facebook::react::NativeYookassaSpecJSI>(params);
+ }
+#endif
 
 @end
