@@ -5,9 +5,9 @@
 
 #ifdef RCT_NEW_ARCH_ENABLED
 #import <RNYookassaSpec/RNYookassaSpec.h>
-#endif
 
 using namespace facebook::react;
+#endif
 
 @interface RCT_EXTERN_MODULE(YandexPayment, RCTViewManager)
 
