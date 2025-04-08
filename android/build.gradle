@@ -35,6 +35,7 @@ android {
     compileSdk 35
 
     defaultConfig {
+        buildConfigField("boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString())
         minSdkVersion 24
         targetSdkVersion 35
     }
@@ -45,8 +46,7 @@ android {
           main {
             if (isNewArchitectureEnabled()) {
                 java.srcDirs += [
-                  "generated/java",
-                  "generated/jni",
+                  "generated",
                   'src/newarch'
                 ]
             } else {

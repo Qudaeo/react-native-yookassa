@@ -1,6 +1,5 @@
 package com.yookassa
 
-import com.facebook.fbreact.specs.NativeYookassaSpec
 import com.facebook.react.bridge.*
 
 class YookassaModule(reactContext: ReactApplicationContext) :
