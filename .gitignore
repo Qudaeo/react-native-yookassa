@@ -37,6 +37,7 @@ project.xcworkspace
 .settings
 local.properties
 android.iml
+.kotlin/
 
 # Cocoapods
 #

@@ -33,7 +33,6 @@ target 'YookassaExample' do
   end
 
   pod 'YooKassaPayments',
-    :build_type => :dynamic_framework,
     :git => 'https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git',
     :tag => '7.4.0'
 

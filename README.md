@@ -134,9 +134,8 @@ use_frameworks!
 
 target 'MyApp' do
   pod 'YooKassaPayments',
-   :build_type => :dynamic_framework,
    :git => 'https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git',
-   :tag => '7.3.0'
+   :tag => '7.4.0'
 
 # ... other dependencies
 
