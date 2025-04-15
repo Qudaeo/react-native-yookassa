@@ -127,12 +127,14 @@ source 'https://git.yoomoney.ru/scm/sdk/cocoa-pod-specs.git'
 
 ...
 
-platform :ios, '14.0'
-use_frameworks!
+use_frameworks! # see details https://git.yoomoney.ru/projects/SDK/repos/yookassa-payments-swift/browse
 
 ...
 
 target 'MyApp' do
+  pod 'FunctionalSwift', '~> 2.0',
+    :source => 'https://git.yoomoney.ru/scm/sdk/cocoa-pod-specs.git'
+
   pod 'YooKassaPayments',
    :git => 'https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git',
    :tag => '7.4.0'
