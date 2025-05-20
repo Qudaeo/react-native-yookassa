@@ -81,9 +81,13 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
         )
 
         DispatchQueue.main.async {
-            let rootViewController = UIApplication
-                .shared.windows.filter {$0.isKeyWindow}.first!.rootViewController
-            rootViewController?.present(self.viewController!, animated: true, completion: nil)
+          let connectedScenes = UIApplication.shared.connectedScenes
+            .filter { $0.activationState == .foregroundActive }
+            .compactMap { $0 as? UIWindowScene }
+
+          let window = connectedScenes.first?.windows.first {$0.isKeyWindow}
+
+          window?.rootViewController?.present(self.viewController!, animated: true, completion: nil)
         }
     }
 
