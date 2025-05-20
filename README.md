@@ -3,19 +3,13 @@ Yookassa Checkout on React Native
 
 Android library: [7.1.0](https://git.yoomoney.ru/projects/SDK/repos/yookassa-android-sdk/browse)
 
-iOS library: [7.4.0](https://git.yoomoney.ru/projects/SDK/repos/yookassa-payments-swift/browse)
+iOS library: [8.0.1](https://git.yoomoney.ru/projects/SDK/repos/yookassa-payments-swift/browse)
 
 Install
 =======
 
-yarn
 ```bash
 yarn add react-native-yookassa
-```
-
-npm
-```bash
-npm install react-native-yookassa --save
 ```
 
 Usage
@@ -127,7 +121,7 @@ source 'https://git.yoomoney.ru/scm/sdk/cocoa-pod-specs.git'
 
 ...
 
-use_frameworks! # see details https://git.yoomoney.ru/projects/SDK/repos/yookassa-payments-swift/browse
+use_frameworks! # Details see on https://git.yoomoney.ru/projects/SDK/repos/yookassa-payments-swift/browse
 
 ...
 
@@ -137,7 +131,7 @@ target 'MyApp' do
 
   pod 'YooKassaPayments',
    :git => 'https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git',
-   :tag => '7.4.0'
+   :tag => '8.0.1'
 
 # ... other dependencies
 
