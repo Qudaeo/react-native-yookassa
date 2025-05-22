@@ -27,11 +27,6 @@ target 'YookassaExample' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  # Run Codegen during development for the example app.
-  pre_install do |installer|
-    system("cd ../../ && npx bob build --target codegen")
-  end
-
   pod 'FunctionalSwift', '~> 2.0',
     :source => 'https://git.yoomoney.ru/scm/sdk/cocoa-pod-specs.git'
 
