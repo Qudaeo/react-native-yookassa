@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "19.7.1",
-    "@evilmartians/lefthook": "1.10.10",
+    "@evilmartians/lefthook": "1.11.13",
     "@react-native-community/cli": "18.0.0",
     "@react-native/eslint-config": "0.79.2",
     "@types/jest": "^29.5.14",
@@ -68,13 +68,13 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.3",
     "jest": "^29.7.0",
-    "prettier": "3.5.0",
+    "prettier": "3.5.3",
     "react": "19.0.0",
-    "react-native": "0.79.0",
-    "react-native-builder-bob": "0.37.0",
-    "release-it": "17.11.0",
-    "turbo": "2.4.2",
-    "typescript": "5.7.3"
+    "react-native": "0.79.2",
+    "react-native-builder-bob": "0.40.11",
+    "release-it": "19.0.2",
+    "turbo": "2.5.3",
+    "typescript": "5.8.3"
   },
   "peerDependencies": {
     "react": "*",
