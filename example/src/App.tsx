@@ -9,7 +9,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 
-import YandexPayment, { PaymentType, Currency } from '../../'
+import YandexPayment, { type PaymentType, type Currency } from '../../'
 import SwitchView from './components/SwitchView';
 import config from './config';
 
