@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "example": "yarn workspace react-native-yookassa-example",
-    "prepare": "bob build",
+    "build": "tsc",
     "release": "release-it"
   },
   "keywords": [
