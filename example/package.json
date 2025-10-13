@@ -24,7 +24,8 @@
     "@react-native/babel-preset": "0.81.0",
     "@react-native/eslint-config": "0.81.0",
     "@react-native/metro-config": "0.81.0",
-    "@react-native/typescript-config": "0.81.0"
+    "@react-native/typescript-config": "0.81.0",
+    "babel-plugin-module-resolver": "^5.0.2"
   },
   "engines": {
     "node": ">=18"
