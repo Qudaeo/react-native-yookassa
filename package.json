@@ -80,18 +80,6 @@
       "@commitlint/config-conventional"
     ]
   },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
-    },
-    "npm": {
-      "publish": true
-    },
-    "github": {
-      "release": true
-    }
-  },
   "eslintConfig": {
     "root": true,
     "extends": [
