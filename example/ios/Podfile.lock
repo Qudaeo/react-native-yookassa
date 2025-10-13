@@ -1,87 +1,86 @@
 PODS:
-  - AppMetricaAdSupport (5.12.1):
-    - AppMetricaCore (= 5.12.1)
-    - AppMetricaCoreExtension (= 5.12.1)
-  - AppMetricaAnalytics (5.12.1):
-    - AppMetricaAdSupport (= 5.12.1)
-    - AppMetricaCore (= 5.12.1)
-    - AppMetricaCrashes (= 5.12.1)
-    - AppMetricaScreenshot (= 5.12.1)
-    - AppMetricaWebKit (= 5.12.1)
-  - AppMetricaCore (5.12.1):
-    - AppMetricaCoreUtils (= 5.12.1)
-    - AppMetricaEncodingUtils (= 5.12.1)
-    - AppMetricaFMDB (= 5.12.1)
-    - AppMetricaHostState (= 5.12.1)
-    - AppMetricaIdentifiers (= 5.12.1)
-    - AppMetricaKeychain (= 5.12.1)
-    - AppMetricaLog (= 5.12.1)
-    - AppMetricaNetwork (= 5.12.1)
-    - AppMetricaPlatform (= 5.12.1)
-    - AppMetricaProtobuf (= 5.12.1)
-    - AppMetricaProtobufUtils (= 5.12.1)
-    - AppMetricaStorageUtils (= 5.12.1)
-  - AppMetricaCoreExtension (5.12.1):
-    - AppMetricaCore (= 5.12.1)
-    - AppMetricaStorageUtils (= 5.12.1)
-  - AppMetricaCoreUtils (5.12.1):
-    - AppMetricaLog (= 5.12.1)
-  - AppMetricaCrashes (5.12.1):
-    - AppMetricaCore (= 5.12.1)
-    - AppMetricaCoreExtension (= 5.12.1)
-    - AppMetricaCoreUtils (= 5.12.1)
-    - AppMetricaEncodingUtils (= 5.12.1)
-    - AppMetricaHostState (= 5.12.1)
-    - AppMetricaLog (= 5.12.1)
-    - AppMetricaPlatform (= 5.12.1)
-    - AppMetricaProtobufUtils (= 5.12.1)
-    - AppMetricaStorageUtils (= 5.12.1)
+  - AppMetricaAdSupport (5.13.0):
+    - AppMetricaCore (= 5.13.0)
+    - AppMetricaCoreExtension (= 5.13.0)
+  - AppMetricaAnalytics (5.13.0):
+    - AppMetricaAdSupport (= 5.13.0)
+    - AppMetricaCore (= 5.13.0)
+    - AppMetricaCrashes (= 5.13.0)
+    - AppMetricaScreenshot (= 5.13.0)
+    - AppMetricaWebKit (= 5.13.0)
+  - AppMetricaCore (5.13.0):
+    - AppMetricaCoreUtils (= 5.13.0)
+    - AppMetricaEncodingUtils (= 5.13.0)
+    - AppMetricaFMDB (= 5.13.0)
+    - AppMetricaHostState (= 5.13.0)
+    - AppMetricaIdentifiers (= 5.13.0)
+    - AppMetricaKeychain (= 5.13.0)
+    - AppMetricaLog (= 5.13.0)
+    - AppMetricaNetwork (= 5.13.0)
+    - AppMetricaPlatform (= 5.13.0)
+    - AppMetricaProtobuf (= 5.13.0)
+    - AppMetricaProtobufUtils (= 5.13.0)
+    - AppMetricaStorageUtils (= 5.13.0)
+  - AppMetricaCoreExtension (5.13.0):
+    - AppMetricaCore (= 5.13.0)
+    - AppMetricaStorageUtils (= 5.13.0)
+  - AppMetricaCoreUtils (5.13.0):
+    - AppMetricaLog (= 5.13.0)
+  - AppMetricaCrashes (5.13.0):
+    - AppMetricaCore (= 5.13.0)
+    - AppMetricaCoreExtension (= 5.13.0)
+    - AppMetricaCoreUtils (= 5.13.0)
+    - AppMetricaEncodingUtils (= 5.13.0)
+    - AppMetricaHostState (= 5.13.0)
+    - AppMetricaLog (= 5.13.0)
+    - AppMetricaPlatform (= 5.13.0)
+    - AppMetricaProtobufUtils (= 5.13.0)
+    - AppMetricaStorageUtils (= 5.13.0)
     - KSCrash/Recording (< 2.2.0, >= 2.1.0)
-  - AppMetricaEncodingUtils (5.12.1):
-    - AppMetricaCoreUtils (= 5.12.1)
-    - AppMetricaLog (= 5.12.1)
-    - AppMetricaPlatform (= 5.12.1)
-  - AppMetricaFMDB (5.12.1)
-  - AppMetricaHostState (5.12.1):
-    - AppMetricaCoreUtils (= 5.12.1)
-    - AppMetricaLog (= 5.12.1)
-  - AppMetricaIdentifiers (5.12.1):
-    - AppMetricaKeychain (= 5.12.1)
-    - AppMetricaLogSwift (= 5.12.1)
-    - AppMetricaPlatform (= 5.12.1)
-    - AppMetricaStorageUtils (= 5.12.1)
-    - AppMetricaSynchronization (= 5.12.1)
-  - AppMetricaKeychain (5.12.1):
-    - AppMetricaCoreUtils (= 5.12.1)
-    - AppMetricaLog (= 5.12.1)
-    - AppMetricaStorageUtils (= 5.12.1)
-  - AppMetricaLog (5.12.1)
-  - AppMetricaLogSwift (5.12.1):
-    - AppMetricaLog (= 5.12.1)
-  - AppMetricaNetwork (5.12.1):
-    - AppMetricaCoreUtils (= 5.12.1)
-    - AppMetricaLog (= 5.12.1)
-    - AppMetricaPlatform (= 5.12.1)
-  - AppMetricaPlatform (5.12.1):
-    - AppMetricaCoreUtils (= 5.12.1)
-    - AppMetricaLog (= 5.12.1)
-  - AppMetricaProtobuf (5.12.1)
-  - AppMetricaProtobufUtils (5.12.1):
-    - AppMetricaProtobuf (= 5.12.1)
-  - AppMetricaScreenshot (5.12.1):
-    - AppMetricaCore (= 5.12.1)
-    - AppMetricaCoreExtension (= 5.12.1)
-  - AppMetricaStorageUtils (5.12.1):
-    - AppMetricaCoreUtils (= 5.12.1)
-    - AppMetricaLog (= 5.12.1)
-  - AppMetricaSynchronization (5.12.1):
-    - AppMetricaLogSwift (= 5.12.1)
-  - AppMetricaWebKit (5.12.1):
-    - AppMetricaCore (= 5.12.1)
-    - AppMetricaCoreUtils (= 5.12.1)
-    - AppMetricaLog (= 5.12.1)
+  - AppMetricaEncodingUtils (5.13.0):
+    - AppMetricaCoreUtils (= 5.13.0)
+    - AppMetricaLog (= 5.13.0)
+    - AppMetricaPlatform (= 5.13.0)
+  - AppMetricaFMDB (5.13.0)
+  - AppMetricaHostState (5.13.0):
+    - AppMetricaCoreUtils (= 5.13.0)
+    - AppMetricaLog (= 5.13.0)
+  - AppMetricaIdentifiers (5.13.0):
+    - AppMetricaKeychain (= 5.13.0)
+    - AppMetricaLogSwift (= 5.13.0)
+    - AppMetricaPlatform (= 5.13.0)
+    - AppMetricaStorageUtils (= 5.13.0)
+    - AppMetricaSynchronization (= 5.13.0)
+  - AppMetricaKeychain (5.13.0):
+    - AppMetricaCoreUtils (= 5.13.0)
+    - AppMetricaLog (= 5.13.0)
+    - AppMetricaStorageUtils (= 5.13.0)
+  - AppMetricaLog (5.13.0)
+  - AppMetricaLogSwift (5.13.0):
+    - AppMetricaLog (= 5.13.0)
+  - AppMetricaNetwork (5.13.0):
+    - AppMetricaCoreUtils (= 5.13.0)
+    - AppMetricaLog (= 5.13.0)
+    - AppMetricaPlatform (= 5.13.0)
+  - AppMetricaPlatform (5.13.0):
+    - AppMetricaCoreUtils (= 5.13.0)
+    - AppMetricaLog (= 5.13.0)
+  - AppMetricaProtobuf (5.13.0)
+  - AppMetricaProtobufUtils (5.13.0):
+    - AppMetricaProtobuf (= 5.13.0)
+  - AppMetricaScreenshot (5.13.0):
+    - AppMetricaCore (= 5.13.0)
+    - AppMetricaCoreExtension (= 5.13.0)
+  - AppMetricaStorageUtils (5.13.0):
+    - AppMetricaCoreUtils (= 5.13.0)
+    - AppMetricaLog (= 5.13.0)
+  - AppMetricaSynchronization (5.13.0):
+    - AppMetricaLogSwift (= 5.13.0)
+  - AppMetricaWebKit (5.13.0):
+    - AppMetricaCore (= 5.13.0)
+    - AppMetricaCoreUtils (= 5.13.0)
+    - AppMetricaLog (= 5.13.0)
   - boost (1.84.0)
-  - ClickstreamSDK (1.5.0)
   - DoubleConversion (1.1.6)
   - fast_float (8.0.0)
   - FBLazyVector (0.81.0)
@@ -2404,7 +2403,7 @@ PODS:
     - React-perflogger (= 0.81.0)
     - React-utils (= 0.81.0)
     - SocketRocket
-  - RNYooKassaPayments (3.3.0):
+  - RNYooKassaPayments (3.4.0):
     - boost
     - DoubleConversion
     - fast_float
@@ -2434,22 +2433,21 @@ PODS:
     - Yoga
     - YooKassaPayments
   - SocketRocket (0.7.1)
-  - SPaySDK (2.6.3):
-    - ClickstreamSDK (~> 1.5.0)
-  - TwoFA (1.4.2):
+  - SPaySDK (3.0.1)
+  - TwoFA (1.4.3):
     - YooMoneyAuthenticatorApi (~> 2.0)
     - YooMoneyCoreApi (~> 3.0)
     - YooMoneyUI (~> 7.7)
   - Yoga (0.0.0)
-  - YooKassaPayments (8.0.1):
-    - AppMetricaAnalytics (~> 5.8)
+  - YooKassaPayments (8.1.0):
+    - AppMetricaAnalytics (~> 5.12)
     - FMobileSdk (~> 2.0.0-1231)
-    - MoneyAuth (~> 12.1)
-    - SPaySDK (~> 2.5)
-    - YooKassaPaymentsApi (~> 2.25)
+    - MoneyAuth (~> 12.2)
+    - SPaySDK (~> 3.0)
+    - YooKassaPaymentsApi (~> 2.26)
     - YooKassaWalletApi (~> 2.7)
     - YooMoneyPinning
-  - YooKassaPaymentsApi (2.25.0):
+  - YooKassaPaymentsApi (2.26.0):
     - FunctionalSwift
     - YooMoneyCoreApi (~> 3.1.1)
   - YooKassaWalletApi (2.7.2):
@@ -2466,7 +2464,7 @@ PODS:
     - YooMoneyCoreApi (~> 3.0)
   - YooMoneySessionProfiler (5.3.4):
     - FMobileSdk
-  - YooMoneyUI (7.14.0):
+  - YooMoneyUI (7.14.2):
     - FunctionalSwift
   - YooMoneyUserAuthCenterApi (10.4.4):
     - FunctionalSwift (~> 2.0)
@@ -2549,7 +2547,7 @@ DEPENDENCIES:
   - RNYooKassaPayments (from `../..`)
   - SocketRocket (~> 0.7.1)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
-  - YooKassaPayments (from `https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git`, tag `8.0.1`)
+  - YooKassaPayments (from `https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git`, tag `8.1.0`)
 
 SPEC REPOS:
   https://git.yoomoney.ru/scm/sdk/cocoa-pod-specs.git:
@@ -2587,7 +2585,6 @@ SPEC REPOS:
     - AppMetricaStorageUtils
     - AppMetricaSynchronization
     - AppMetricaWebKit
-    - ClickstreamSDK
     - KSCrash
     - OpenSSL-Universal
     - SocketRocket
@@ -2743,37 +2740,36 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
   YooKassaPayments:
     :git: https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git
-    :tag: 8.0.1
+    :tag: 8.1.0
 
 CHECKOUT OPTIONS:
   YooKassaPayments:
     :git: https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git
-    :tag: 8.0.1
+    :tag: 8.1.0
 
 SPEC CHECKSUMS:
-  AppMetricaAdSupport: 26884bc5ec935a990b6bbfa938c854c0fdf1b248
-  AppMetricaAnalytics: 89c6cb2f7b6f75f83ccdab2b719afe9b51f1680d
-  AppMetricaCore: 145ddc416db0a7eead339de9a5e1521863426a1b
-  AppMetricaCoreExtension: 1fc4222eef017e25e8f89c5b02b8563179a40d13
-  AppMetricaCoreUtils: 9e23195da2dc2d76404ac49592e05f1dd276d1e8
-  AppMetricaCrashes: 41d7e00fc2da7ca9c8de670546d65635c81ff821
-  AppMetricaEncodingUtils: 02f48c8d45b7883c4e2a85d49ec3a66a39fd4f6d
-  AppMetricaFMDB: 482767dda08c9cec7c8d115d423aacb6b21e9e89
-  AppMetricaHostState: 447bc4c02107b3531ae77fc91ea200ddc32bb029
-  AppMetricaIdentifiers: 1c34f28d8650c4c5c931643ac8779f431e809c9f
-  AppMetricaKeychain: 76f4afe269b233c1a2493350712d24c4d18858b8
-  AppMetricaLog: 84a50f144c83a7de66778dfa990db0ac1d60e10c
-  AppMetricaLogSwift: 3ca89a024f3c8c7b09f4b2ce89a6e7ce65b3b7d6
-  AppMetricaNetwork: e8ba646d4408e2b62e272f8b49c66ffda103bfbd
-  AppMetricaPlatform: 543e24bd127eb94c14a708770980f9203e9403b4
-  AppMetricaProtobuf: 437a155c3ea82c7fc9a5f8ff5037c513a2287225
-  AppMetricaProtobufUtils: f8bf3222d88f466363a657dd14b575af16327d81
-  AppMetricaScreenshot: 852d0d8e7507de940120550890bd75cb53fbdfe3
-  AppMetricaStorageUtils: e10b5fbf8c8d9125ad200a360c9e95e53c7a0f3c
-  AppMetricaSynchronization: 3c019f1c791e11f80de51cacda4b2ed4b20935a8
-  AppMetricaWebKit: 4a659e1f6990460e8e4893d44a22af01b5c57a4f
+  AppMetricaAdSupport: 06eaac57c5aee3913dd8e250938de5e7b6dabb25
+  AppMetricaAnalytics: 44356d9e3b1470b69bf3462bae5e2152c00e3714
+  AppMetricaCore: 136399e333bf3e4fabca0ce5dce721600c7e3b7f
+  AppMetricaCoreExtension: 792d4c64098c22a735ae6548f6b861eb071bf9d9
+  AppMetricaCoreUtils: f749f038a04d63843dba7fcd3435ed25cb604eb1
+  AppMetricaCrashes: bf7807190682907b1273a7826217339186781d57
+  AppMetricaEncodingUtils: a9ccf513a75ea4ac019e74403ff498d7f2b7d928
+  AppMetricaFMDB: 02b39ce6c57c6514952fcae1ab995cde6fab81ff
+  AppMetricaHostState: 157cc22b5f481e37cba31c11ace839924a9859f4
+  AppMetricaIdentifiers: 0b36f3efe34951d8c6bf86f71e3c269ec53f001a
+  AppMetricaKeychain: 3b8aa316362a45c1256c80fc39fa1c58a68961ee
+  AppMetricaLog: 09ca74b9a94da47718e370cf67782a066973044c
+  AppMetricaLogSwift: a775cc34f2f03c27d3b73b2f6874dabef1a335c4
+  AppMetricaNetwork: fe1875060e6872c6822aff122200ee266f4a830a
+  AppMetricaPlatform: e793f836c9cfc3b80e807ec6a3ad6f31c5d5af2e
+  AppMetricaProtobuf: 9d974a0b53e493cfa0f75c4026b26e4d8bdec967
+  AppMetricaProtobufUtils: c0738ed4358bfd3559b2e6b0f8b747a785c77737
+  AppMetricaScreenshot: dd38b6c386d444ce7fbc3f474d03fd222a16d64c
+  AppMetricaStorageUtils: 7dbccf04db51bcaae46d0a635305048fae06a3d3
+  AppMetricaSynchronization: 528a2b9643e42d125c41609a04475c408f32097c
+  AppMetricaWebKit: 56e66d375c12e59383b7be8c748b4b4a4aa0afd1
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
-  ClickstreamSDK: 591cbf0c2f96bcaba6a36365a94a19f4463a1ae5
   DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
   fast_float: b32c788ed9c6a8c584d114d0047beda9664e7cc6
   FBLazyVector: a867936a67af0d09c37935a1b900a1a3c795b6d1
@@ -2849,21 +2845,21 @@ SPEC CHECKSUMS:
   ReactAppDependencyProvider: c91900fa724baee992f01c05eeb4c9e01a807f78
   ReactCodegen: 8f2a63b11f0625a7b36d4c8c588d7c89a3086cda
   ReactCommon: 5ee89f5eec706805c432ed5b598adcd4e5aaa088
-  RNYooKassaPayments: d0e05bdf34ed4c4a1251ac798d643acbbc6c3a80
+  RNYooKassaPayments: c5d7d19c22729b5eba5c043b4b41776300f83bcb
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  SPaySDK: 96c77660e19ec669e0ea7434c677dce884e64219
-  TwoFA: 295a51b9cdce323d9dc7d37a283985eed326e2f8
+  SPaySDK: 62822fd68030e5b349fa0a383d8cb55f4f951d70
+  TwoFA: 43214c0d2f7be83bccad6e8a31b656565632ce95
   Yoga: be78ddad0c56d06a5e41eaef4bfbbd49b86a4d07
-  YooKassaPayments: 2ae40dfcbb8179b37dfe3cbcf3731aa5ae0611e1
-  YooKassaPaymentsApi: 63a1fb836f6543e306891ae9a58a55928b2df842
+  YooKassaPayments: 9e9c5623d5e412190595516c928aed7672e39336
+  YooKassaPaymentsApi: f4441641c0456c7e6f252eee2a587b19df41fbbe
   YooKassaWalletApi: f7162cf7dd44a261ab1be83e66c6c67d50f90122
   YooMoneyAuthenticatorApi: 473077a60a5db1c8e1f0310f8437cab34b8e021e
   YooMoneyCoreApi: f53a22898878aab2f07449351a8a08f4918a6100
   YooMoneyPinning: 017733bf2c38491ee93a4d22e25c0b28051b4c6d
   YooMoneySessionProfiler: 27f7eaa9b282a9cbb68cec977242b06ac2c06c2f
-  YooMoneyUI: 94796fc4bd3f550ca4d429ba3a1b8d9fa1e70f3b
+  YooMoneyUI: af34ddd1b07cfaff4b194cc944a823aae68f5798
   YooMoneyUserAuthCenterApi: e19361858e23ef4072ffacc5b3aa1d0925714f22
 
-PODFILE CHECKSUM: 3377cbb76a52bc5c21c2ae3c7cf35ba58ba3eaf4
+PODFILE CHECKSUM: 0db30e1435ee9731da160d507e349d4ced312589
 
 COCOAPODS: 1.15.2
