@@ -57,6 +57,7 @@
     "@react-native-community/cli": "20.1.0",
     "@react-native/eslint-config": "0.85.3",
     "@types/react": "^19.2.0",
+    "@types/react-native": "*",
     "commitlint": "^17.8.1",
     "del-cli": "7.0.0",
     "eslint": "^8.19.0",
