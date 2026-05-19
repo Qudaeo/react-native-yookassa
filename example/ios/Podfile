@@ -28,12 +28,7 @@ target 'YookassaExample' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  pod 'FunctionalSwift', '~> 2.0',
-    :source => 'https://git.yoomoney.ru/scm/sdk/cocoa-pod-specs.git'
-
-  pod 'YooKassaPayments',
-    :git => 'https://git.yoomoney.ru/scm/sdk/yookassa-payments-swift.git',
-    :tag => '8.1.0'
+  pod 'YooKassaPayments', '10.0.1'
 
   post_install do |installer|
     # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
