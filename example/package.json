@@ -10,24 +10,25 @@
     "build:ios": "react-native build-ios --scheme YookassaExample --mode Debug --extra-params \"-sdk iphonesimulator CC=clang CPLUSPLUS=clang++ LD=clang LDPLUSPLUS=clang++ GCC_OPTIMIZATION_LEVEL=0 GCC_PRECOMPILE_PREFIX_HEADER=YES ASSETCATALOG_COMPILER_OPTIMIZATION=time DEBUG_INFORMATION_FORMAT=dwarf COMPILER_INDEX_STORE_ENABLE=NO\""
   },
   "dependencies": {
-    "react": "19.1.0",
-    "react-native": "0.81.0",
+    "react": "19.2.3",
+    "react-native": "0.85.3",
     "react-native-safe-area-context": "5.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.3",
     "@babel/runtime": "^7.25.0",
-    "@react-native-community/cli": "20.0.0",
-    "@react-native-community/cli-platform-android": "20.0.0",
-    "@react-native-community/cli-platform-ios": "20.0.0",
-    "@react-native/babel-preset": "0.81.0",
-    "@react-native/eslint-config": "0.81.0",
-    "@react-native/metro-config": "0.81.0",
-    "@react-native/typescript-config": "0.81.0",
+    "@react-native-community/cli": "20.1.0",
+    "@react-native-community/cli-platform-android": "20.1.0",
+    "@react-native-community/cli-platform-ios": "20.1.0",
+    "@react-native/babel-preset": "0.85.3",
+    "@react-native/eslint-config": "0.85.3",
+    "@react-native/jest-preset": "0.85.3",
+    "@react-native/metro-config": "0.85.3",
+    "@react-native/typescript-config": "0.85.3",
     "babel-plugin-module-resolver": "^5.0.2"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">= 22.11.0"
   }
 }
