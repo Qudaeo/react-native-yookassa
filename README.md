@@ -1,7 +1,7 @@
 Yookassa Checkout on React Native
 =====
 
-Android library: [8.3.0](https://git.yoomoney.ru/projects/SDK/repos/yookassa-android-sdk/browse)
+Android library: [8.4.0](https://git.yoomoney.ru/projects/SDK/repos/yookassa-android-sdk/browse)
 
 iOS library: [11.0.1](https://git.yoomoney.ru/projects/SDK/repos/yookassa-payments-swift/browse)
 
