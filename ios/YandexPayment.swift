@@ -44,50 +44,51 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
                 rejecter: @escaping RCTPromiseRejectBlock) -> Void {
         // decline previous callback
         if  self.storedRejecter != nil {
-            self.storedRejecter?("decline","You are trying to show functionality without clossing previous",nil)
+            self.storedRejecter?("decline","You are trying to show functionality without closing previous",nil)
         }
         self.storedResolver = resolver
         self.storedRejecter = rejecter
-        let shop = Shop(
-            id: map["SHOP_ID"] as! String,
-            token: map["SHOP_TOKEN"] as! String,
-            name: map["SHOP_NAME"] as! String,
-            description: map["SHOP_DESCRIPTION"] as! String,
-            returnUrl: map["SHOP_RETURN_URL"] as! String
-        )
-
-        let payment = Payment(
-            amount: map["PAYMENT_AMOUNT"] as! Double,
-            currency: stringToCurrency(string: map["PAYMENT_CURRENCY"] as! String),
-            types: arrayToSetPaymentTypes(nsArray: (map["PAYMENT_TYPES_ARRAY"] as! NSArray)),
-            savePaymentMethod: stringToSavePaymentType(string: map["PAYMENT_SAVE_TYPE"] as! String),
-            moneyAuthClientId: map["PAYMENT_YOO_MONEY_CLIENT_ID"] as! String
-        )
-
-        let moduleInputData = TokenizationModuleInputData(
-            clientApplicationKey: shop.token,
-            shopName: shop.name,
-            shopId: shop.id,
-            purchaseDescription: shop.description,
-            amount: Amount(value: Decimal(payment.amount), currency: payment.currency),
-            tokenizationSettings: TokenizationSettings(paymentMethodTypes: PaymentMethodTypes(rawValue: payment.types)),
-            savePaymentMethod: payment.savePaymentMethod,
-            moneyAuthClientId: payment.moneyAuthClientId
-        )
-        let inputData: TokenizationFlow = .tokenization(moduleInputData)
-        viewController = TokenizationAssembly.makeModule(
-            inputData: inputData,
-            moduleOutput: self
-        )
 
         DispatchQueue.main.async {
-          let connectedScenes = UIApplication.shared.connectedScenes
-            .filter { $0.activationState == .foregroundActive }
-            .compactMap { $0 as? UIWindowScene }
+            let shop = Shop(
+                id: map["SHOP_ID"] as! String,
+                token: map["SHOP_TOKEN"] as! String,
+                name: map["SHOP_NAME"] as! String,
+                description: map["SHOP_DESCRIPTION"] as! String,
+                returnUrl: map["SHOP_RETURN_URL"] as! String
+            )
 
-          let window = connectedScenes.first?.windows.first {$0.isKeyWindow}
+            let payment = Payment(
+                amount: map["PAYMENT_AMOUNT"] as! Double,
+                currency: self.stringToCurrency(string: map["PAYMENT_CURRENCY"] as! String),
+                types: self.arrayToSetPaymentTypes(nsArray: (map["PAYMENT_TYPES_ARRAY"] as! NSArray)),
+                savePaymentMethod: self.stringToSavePaymentType(string: map["PAYMENT_SAVE_TYPE"] as! String),
+                moneyAuthClientId: map["PAYMENT_YOO_MONEY_CLIENT_ID"] as! String
+            )
 
-          window?.rootViewController?.present(self.viewController!, animated: true, completion: nil)
+            let moduleInputData = TokenizationModuleInputData(
+                clientApplicationKey: shop.token,
+                shopName: shop.name,
+                shopId: shop.id,
+                purchaseDescription: shop.description,
+                amount: Amount(value: Decimal(payment.amount), currency: payment.currency),
+                tokenizationSettings: TokenizationSettings(paymentMethodTypes: PaymentMethodTypes(rawValue: payment.types)),
+                savePaymentMethod: payment.savePaymentMethod,
+                moneyAuthClientId: payment.moneyAuthClientId
+            )
+            let inputData: TokenizationFlow = .tokenization(moduleInputData)
+            self.viewController = TokenizationAssembly.makeModule(
+                inputData: inputData,
+                moduleOutput: self
+            )
+
+            let connectedScenes = UIApplication.shared.connectedScenes
+              .filter { $0.activationState == .foregroundActive }
+              .compactMap { $0 as? UIWindowScene }
+
+            let window = connectedScenes.first?.windows.first {$0.isKeyWindow}
+
+            window?.rootViewController?.present(self.viewController!, animated: true, completion: nil)
         }
     }
 
