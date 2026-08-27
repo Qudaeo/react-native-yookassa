@@ -53,8 +53,8 @@
   "devDependencies": {
     "@commitlint/config-conventional": "19.8.1",
     "@evilmartians/lefthook": "1.12.3",
-    "@react-native-community/cli": "20.1.0",
-    "@react-native/eslint-config": "0.85.3",
+    "@react-native-community/cli": "20.2.0",
+    "@react-native/eslint-config": "0.87.1",
     "@types/react": "^19.2.0",
     "@types/react-native": "*",
     "commitlint": "^17.8.1",
@@ -64,7 +64,7 @@
     "eslint-plugin-prettier": "^5.2.3",
     "prettier": "2.8.8",
     "release-it": "20.0.1",
-    "typescript": "^5.8.3"
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
     "react": "*",
