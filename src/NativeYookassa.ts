@@ -18,8 +18,8 @@ export interface Spec extends TurboModule {
   show3ds(
     requestUrl: string,
     paymentType: string,
-    shopId: string,
     clientApplicationKey: string,
+    shopId: string,
   ): Promise<'RESULT_OK' | undefined>;
   close(): void;
 }
