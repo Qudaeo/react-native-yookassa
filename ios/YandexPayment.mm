@@ -12,8 +12,8 @@ using namespace facebook::react;
 @interface RCT_EXTERN_MODULE(YandexPayment, RCTViewManager)
 
 RCT_EXTERN_METHOD(attach: (NSDictionary *) map
-                  resolver:(RCTPromiseResolveBlock)resolve
-                  rejecter:(RCTPromiseRejectBlock)reject)
+                  resolve:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(close)
 
@@ -21,8 +21,8 @@ RCT_EXTERN_METHOD(show3ds: (NSString *) requestUrl
                   paymentType:(NSString *) paymentType
                   clientApplicationKey:(NSString *) clientApplicationKey
                   shopId:(NSString *) shopId
-                  resolver:(RCTPromiseResolveBlock)resolve
-                  rejecter:(RCTPromiseRejectBlock)reject)
+                  resolve:(RCTPromiseResolveBlock)resolve
+                  reject:(RCTPromiseRejectBlock)reject)
 
 #ifdef RCT_NEW_ARCH_ENABLED
  - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:

@@ -16,14 +16,14 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
                  paymentType: String,
                  clientApplicationKey: String,
                  shopId: String,
-                 resolver: @escaping RCTPromiseResolveBlock,
-                 rejecter: @escaping RCTPromiseRejectBlock) -> Void {
+                 resolve: @escaping RCTPromiseResolveBlock,
+                 reject: @escaping RCTPromiseRejectBlock) -> Void {
         // decline previous callback
         if  self.storedRejecter != nil {
             self.storedRejecter?("decline","You are trying to show functionality without clossing previous",nil)
         }
-        self.storedResolver = resolver
-        self.storedRejecter = rejecter
+        self.storedResolver = resolve
+        self.storedRejecter = reject
         if let viewController = viewController {
             viewController.startConfirmationProcess(confirmationUrl: requestUrl, paymentMethodType: stringToPaymentType(paymentType: paymentType))
         }
@@ -40,14 +40,14 @@ class YandexPayment: RCTViewManager, TokenizationModuleOutput {
 
     @objc
     func attach(_ map: NSDictionary,
-                resolver: @escaping RCTPromiseResolveBlock,
-                rejecter: @escaping RCTPromiseRejectBlock) -> Void {
+                resolve: @escaping RCTPromiseResolveBlock,
+                reject: @escaping RCTPromiseRejectBlock) -> Void {
         // decline previous callback
         if  self.storedRejecter != nil {
             self.storedRejecter?("decline","You are trying to show functionality without closing previous",nil)
         }
-        self.storedResolver = resolver
-        self.storedRejecter = rejecter
+        self.storedResolver = resolve
+        self.storedRejecter = reject
 
         DispatchQueue.main.async {
             let shop = Shop(
